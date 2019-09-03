@@ -39,6 +39,8 @@ py runTest.py
 * **P. Siqueira** - *fala umas coisa engraçada* - [Vlog](https://onepieceex.net/)
 * **O arquiteto** - *Initial work* - [O arquiteto](https://matrix.fandom.com/wiki/The_Architect)
 
+Costumava ter mais dois tb
+
 ## Licença
 
 Este projeto é licenciado sobre a licença VEMTRANQUILO, não plagia, e se plagiar, manda pra gente

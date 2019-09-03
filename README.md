@@ -39,7 +39,9 @@ py runTest.py
 * **P. Siqueira** - *fala umas coisa engraçada* - [Vlog](https://onepieceex.net/)
 * **O arquiteto** - *Initial work* - [O arquiteto](https://matrix.fandom.com/wiki/The_Architect)
 
-Costumava ter mais dois tb
+Desligados da matrix:
+* **T. Santana** - *eu não sei programar, meu querido* - [Advanced Internship sponsored by Embraer](https://www.udacity.com/course/introduction-to-python--ud1110)
+* **A. Sacramento** - *Amante dos felinos * - [Portfolio](https://digaolanches.com.br/)
 
 ## Licença
 

@@ -151,3 +151,26 @@ def coef_convec(Pr,m,Deq,mi,ap,kf):
 	h[1] = 0.26 * math.pow(Pr[1],0.4)* math.pow((m[1]*Deq/(mi[1]*ap)),0.65) * (kf[1]/Deq)
 	
 	return h
+
+def tabela_condutividade(nome_material):
+    '''
+    Descr: Retorna a condutividade termica do material desejado selecionado
+    de um banco de dados
+
+    Inputs:
+                -nome_material: string com o nome do material. ex: 'cobre';
+    Output:
+                -k: valor da constante da condutividade
+    Author: Matheus e Pedro
+    Apoio Moral: Matheus
+    '''
+    db = pd.read_csv("database/materiais/k.csv", sep = ";") #Carrega o arquivo csv
+    print(db)
+
+    Material = db.iloc[0:db.shape[0],0]
+    k = db.iloc[0:db.shape[0],1]
+
+    material_list = Material.values.tolist()        # Cria uma lista a partir do dataframe
+
+    index = material_list.index(nome_material)      # Indentifica uma string específica na lista
+    return k[index]     # retorna o valor corresponde de k ao index da string

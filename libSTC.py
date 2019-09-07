@@ -174,3 +174,23 @@ def tabela_condutividade(nome_material):
 
     index = material_list.index(nome_material)      # Indentifica uma string específica na lista
     return k[index]     # retorna o valor corresponde de k ao index da string
+
+def area_troca_termica(Q, Ud, dTln, Aef):
+    '''
+	Descr: Calcula a area de troca térmica e o numero de placas
+
+	Inputs: 
+            - Q    : Calor
+            - Ud   : Coeficiente global
+            - dTln : deltaTln
+            - Aef  : Area efetiva (w*L)
+
+	Outputs: 
+			-[A, Np]: list com a ara de troca termica necessaria e o numero de placas
+	Author: Vinicius
+	'''
+    #Calculo do A
+    A = Q/(Ud*dTln)
+    Np = A/Aef
+
+    return [A,Np]

@@ -194,3 +194,47 @@ def area_troca_termica(Q, Ud, dTln, Aef):
     Np = A/Aef
 
     return [A,Np]
+
+def calculaQ(m1, cp1, dT1, m2, cp2, dT2):
+    '''
+	Descr: Calcula a taxa de troca de calor Q p/ fluido quente e frio( ou fluido 1 e 2)
+    Ainda verifica se ambos os fluidos estao esquentando ou esfrianddo, evitando bugs
+
+	Inputs: 
+			- m1: Vazao massica do fluido 1
+			- cp1: Calor especifico do fluido 1
+			- dT1: Variação de temperatura do fluido 1
+            - m2: Vazao massica do fluido 2
+            - cp2: Calor especifico do fluido 2
+            - dT2: Variação de temperatura do fluido 2
+	Outputs: 
+			- list contendo [Q1, Q2, menorQ, porc]:
+                - Q1: Q do fluido 1
+                - Q2: Q do fluido 2
+                - menorQ: menorQ entre Q1 e Q2
+                - porc: Porcentagem da diferença entre ambos Q1 e Q2
+	Author: Vinicius
+	'''
+
+    Q1 = m1*cp1*dT1
+    Q2 = m2*cp2*dT2
+
+    if dT1>=0 and dT2>=0:
+        print("Erro, ambos os fluidos estão esquentando")
+        return "Erro Q1"
+    elif dT1<0 and dT2<0:
+        print("Erro, ambos os fluido estão esfriando")
+        return "Erro Q2"
+
+
+    dif = abs(Q1+Q2) #Nao precisa subtrair, um dos Qs ja vai ter sinal de menos   
+
+    vetor = np.array([Q1, Q2])
+    menorQ = np.min(vetor)
+
+    porc = abs(dif/(menorQ))
+
+    print("Afastamento de %.2f %% no balanço de energia" %(porc*100))
+
+    #Retorna o pior caso (menor troca de temperatura) e a porcentagem do desvio entre os Qs
+    return [Q1, Q2, menorQ, porc]

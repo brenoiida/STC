@@ -694,7 +694,7 @@ color: rgb(48, 143, 123);</string>
                 <enum>QFrame::Box</enum>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <property name="tabSpacing">
                 <number>1</number>
@@ -717,6 +717,9 @@ color: rgb(48, 143, 123);</string>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
                   <widget class="QRadioButton" name="radioButton">
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="text">
                     <string>Trocador de placas</string>
                    </property>
@@ -727,6 +730,9 @@ color: rgb(48, 143, 123);</string>
                  </item>
                  <item>
                   <widget class="QRadioButton" name="radioButton_3">
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="text">
                     <string>Bitubular</string>
                    </property>
@@ -734,6 +740,9 @@ color: rgb(48, 143, 123);</string>
                  </item>
                  <item>
                   <widget class="QRadioButton" name="radioButton_2">
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="text">
                     <string>Casco e tubo</string>
                    </property>
@@ -746,8 +755,8 @@ color: rgb(48, 143, 123);</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>164</width>
-                  <height>69</height>
+                  <width>93</width>
+                  <height>41</height>
                  </rect>
                 </property>
                 <attribute name="label">
@@ -756,6 +765,9 @@ color: rgb(48, 143, 123);</string>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
                  <item>
                   <widget class="QPushButton" name="pushButton">
+                   <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                   </property>
                    <property name="text">
                     <string>Abrir</string>
                    </property>
@@ -806,6 +818,301 @@ color: rgb(48, 143, 123);</string>
           <property name="verticalSpacing">
            <number>5</number>
           </property>
+          <item row="19" column="0" colspan="2">
+           <widget class="QComboBox" name="f1Fluids_combobox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>11</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="insertPolicy">
+             <enum>QComboBox::InsertAtBottom</enum>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="modelColumn">
+             <number>0</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>Personalizado</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Água</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Amonia</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Benzeno</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Tolueno</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="18" column="0" colspan="2">
+           <widget class="QLabel" name="f1Fluids_label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>13</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Selecionar fluido</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QDoubleSpinBox" name="f1T1_entry">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 100, 148);</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="minimum">
+             <double>-99999.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>99999.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="f1T1Unit_comboBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="modelColumn">
+             <number>0</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>ºC</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>K</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>ºF</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>R</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="f1Flow_label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>400</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Vazão do fluido</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QDoubleSpinBox" name="f1Flow_entry">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 100, 148);</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="maximum">
+             <double>99999.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QDoubleSpinBox" name="f1T2_entry">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>1</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 100, 148);</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="minimum">
+             <double>-9999.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>99999.000000000000000</double>
+            </property>
+           </widget>
+          </item>
           <item row="19" column="4">
            <widget class="QDoubleSpinBox" name="f1Mi_spinbox">
             <property name="minimumSize">
@@ -951,16 +1258,6 @@ color: rgb(0, 100, 148);</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="3" rowspan="5" colspan="3">
-           <widget class="QLabel" name="f1Image_label">
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/PlateHeatExchanger/Plate_heat_exchanger.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
           <item row="19" column="3">
            <widget class="QLabel" name="f1Mi_label">
             <property name="sizePolicy">
@@ -989,10 +1286,31 @@ color: rgb(0, 100, 148);</string>
             </property>
            </widget>
           </item>
-          <item row="17" column="2" rowspan="5">
-           <widget class="Line" name="f1LineVertical">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
+          <item row="1" column="3" rowspan="5" colspan="3">
+           <widget class="QLabel" name="f1Image_label">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/PlateHeatExchanger/Plate_heat_exchanger.jpg&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="21" column="5">
+           <widget class="QLabel" name="f1RUnit_label">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>[(s.m².K)/J]</string>
             </property>
            </widget>
           </item>
@@ -1014,21 +1332,10 @@ color: rgb(0, 100, 148);</string>
             </property>
            </widget>
           </item>
-          <item row="21" column="5">
-           <widget class="QLabel" name="f1RUnit_label">
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>[(s.m².K)/J]</string>
+          <item row="17" column="2" rowspan="5">
+           <widget class="Line" name="f1LineVertical">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
             </property>
            </widget>
           </item>
@@ -1096,21 +1403,35 @@ color: rgb(0, 100, 148);</string>
             </property>
            </widget>
           </item>
-          <item row="20" column="5">
-           <widget class="QLabel" name="f1KUnit_label">
-            <property name="maximumSize">
+          <item row="18" column="4">
+           <widget class="QDoubleSpinBox" name="f1Rho_spinBox">
+            <property name="minimumSize">
              <size>
-              <width>100</width>
-              <height>16777215</height>
+              <width>0</width>
+              <height>24</height>
              </size>
             </property>
             <property name="font">
              <font>
+              <family>Segoe UI</family>
               <pointsize>10</pointsize>
              </font>
             </property>
-            <property name="text">
-             <string>[mW/(m.K)]</string>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 100, 148);</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="buttonSymbols">
+             <enum>QAbstractSpinBox::NoButtons</enum>
+            </property>
+            <property name="minimum">
+             <double>0.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -1146,8 +1467,26 @@ color: rgb(0, 100, 148);</string>
             </property>
            </widget>
           </item>
-          <item row="18" column="4">
-           <widget class="QDoubleSpinBox" name="f1Rho_spinBox">
+          <item row="20" column="5">
+           <widget class="QLabel" name="f1KUnit_label">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>[mW/(m.K)]</string>
+            </property>
+           </widget>
+          </item>
+          <item row="20" column="4">
+           <widget class="QDoubleSpinBox" name="f1Kf_spinbox">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -1204,393 +1543,6 @@ color: rgb(0, 100, 148);</string>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
-           </widget>
-          </item>
-          <item row="20" column="4">
-           <widget class="QDoubleSpinBox" name="f1Kf_spinbox">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 100, 148);</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="minimum">
-             <double>0.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>999999.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="19" column="0" colspan="2">
-           <widget class="QComboBox" name="f1Fluids_combobox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>11</pointsize>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="insertPolicy">
-             <enum>QComboBox::InsertAtBottom</enum>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="modelColumn">
-             <number>0</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>Personalizado</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Água</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Amonia</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Benzeno</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Tolueno</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="18" column="0" colspan="2">
-           <widget class="QLabel" name="f1Fluids_label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>1</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>13</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Selecionar fluido</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QComboBox" name="f1T1Unit_comboBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="modelColumn">
-             <number>0</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>ºC</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>K</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>ºF</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>R</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QDoubleSpinBox" name="f1T1_entry">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 100, 148);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="minimum">
-             <double>-99999.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>99999.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QDoubleSpinBox" name="f1Flow_entry">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 100, 148);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="maximum">
-             <double>99999.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QDoubleSpinBox" name="f1T2_entry">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 100, 148);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::NoButtons</enum>
-            </property>
-            <property name="minimum">
-             <double>-9999.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>99999.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="f1Flow_label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>400</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Vazão do fluido</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QComboBox" name="f1T2Unit_combobox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="modelColumn">
-             <number>0</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>ºC</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>K</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>ºF</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>R</string>
-             </property>
-            </item>
            </widget>
           </item>
           <item row="6" column="1">
@@ -1653,6 +1605,22 @@ color: rgb(0, 100, 148);</string>
             </item>
            </widget>
           </item>
+          <item row="14" column="0" colspan="6">
+           <widget class="Line" name="f1LineHorizontal">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
           <item row="3" column="0" colspan="2">
            <widget class="QLabel" name="f1T2_label">
             <property name="sizePolicy">
@@ -1681,19 +1649,41 @@ color: rgb(0, 100, 148);</string>
             </property>
            </widget>
           </item>
-          <item row="14" column="0" colspan="6">
-           <widget class="Line" name="f1LineHorizontal">
-            <property name="styleSheet">
-             <string notr="true"/>
+          <item row="20" column="1">
+           <widget class="QPushButton" name="f1VerDados_btn">
+            <property name="maximumSize">
+             <size>
+              <width>70</width>
+              <height>16777215</height>
+             </size>
             </property>
-            <property name="frameShadow">
-             <enum>QFrame::Sunken</enum>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
             </property>
-            <property name="lineWidth">
-             <number>1</number>
+            <property name="text">
+             <string>Ver dados</string>
             </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+            <property name="default">
+             <bool>true</bool>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="f1TUnit_label">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>ºC</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -1718,10 +1708,22 @@ color: rgb(0, 100, 148);</string>
           </item>
           <item row="6" column="4">
            <widget class="QLabel" name="f1Tm_label">
+            <property name="minimumSize">
+             <size>
+              <width>155</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>155</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="font">
              <font>
               <family>Segoe UI</family>
-              <pointsize>10</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="toolTip">
@@ -1731,29 +1733,10 @@ color: rgb(0, 100, 148);</string>
              <enum>QFrame::NoFrame</enum>
             </property>
             <property name="text">
-             <string>Fluido avaliado em 40ºC</string>
+             <string>Fluido avaliado em 4000ºC</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="20" column="1">
-           <widget class="QPushButton" name="f1VerDados_btn">
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>Ver dados</string>
-            </property>
-            <property name="default">
-             <bool>true</bool>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -2252,66 +2235,6 @@ color: rgb(0, 100, 148);</string>
             </item>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QComboBox" name="f2T2Unit_comboBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>24</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>70</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="modelColumn">
-             <number>0</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>ºC</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>K</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>ºF</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>R</string>
-             </property>
-            </item>
-           </widget>
-          </item>
           <item row="5" column="1">
            <widget class="QComboBox" name="f2FlowUnit_comboBox">
             <property name="sizePolicy">
@@ -2608,16 +2531,22 @@ color: rgb(0, 100, 148);</string>
           </item>
           <item row="5" column="4">
            <widget class="QLabel" name="f2Tm_label">
+            <property name="minimumSize">
+             <size>
+              <width>155</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>16777215</width>
+              <width>155</width>
               <height>16777215</height>
              </size>
             </property>
             <property name="font">
              <font>
               <family>Segoe UI</family>
-              <pointsize>10</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="toolTip">
@@ -2704,6 +2633,9 @@ color: rgb(0, 100, 148);</string>
               <height>16777215</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::ClickFocus</enum>
+            </property>
             <property name="text">
              <string>Ver dados</string>
             </property>
@@ -2712,6 +2644,22 @@ color: rgb(0, 100, 148);</string>
             </property>
             <property name="flat">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="f2TUnit_label">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>ºC</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
             </property>
            </widget>
           </item>
@@ -2754,6 +2702,31 @@ color: rgb(0, 100, 148);</string>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>f1T1_entry</tabstop>
+  <tabstop>f1T2_entry</tabstop>
+  <tabstop>f1Flow_entry</tabstop>
+  <tabstop>f1Cp_spinBox</tabstop>
+  <tabstop>f1Rho_spinBox</tabstop>
+  <tabstop>f1Mi_spinbox</tabstop>
+  <tabstop>f1Kf_spinbox</tabstop>
+  <tabstop>f1R_spinbox</tabstop>
+  <tabstop>f2T1_entry</tabstop>
+  <tabstop>f2T2_entry</tabstop>
+  <tabstop>f2Flow_entry</tabstop>
+  <tabstop>f2Cp_spinBox</tabstop>
+  <tabstop>f2Rho_spinBox</tabstop>
+  <tabstop>f2Mi_spinBox</tabstop>
+  <tabstop>f2K_spinBox</tabstop>
+  <tabstop>f2R_spinBox</tabstop>
+  <tabstop>f1VerDados_btn</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>radioButton_2</tabstop>
+  <tabstop>radioButton_3</tabstop>
+  <tabstop>radioButton</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>f2VerDados_btn</tabstop>
+ </tabstops>
  <resources>
   <include location="images/images.qrc"/>
  </resources>

@@ -263,3 +263,25 @@ def calculaQ(m1, cp1, dT1, m2, cp2, dT2):
 
     #Retorna o pior caso (menor troca de temperatura) e a porcentagem do desvio entre os Qs
     return [Q1, Q2, menorQ, porc]
+
+def ConverterTemperatura(esc, num):
+    ''' Descr: Converte o valor de temperatura de qualquer unidade p/ ºC p/ ser utilizado na busca do banco de dados
+	Input: 
+			- esc: string contendo a unidade de medida [ºC, K, ºF, R]
+			- num: Valor da temperatura na unidade fornecida
+	Outputs:
+			- temp: Temperatura convertida em ºC
+	Author: - Thenysson'''
+
+    if esc == 'ºC':
+      temp = num  
+    elif esc == 'K':
+      temp = num-273.15
+    elif esc == 'ºF':
+      temp = (num - 32)*(5/9)
+    elif esc == 'R':
+      temp = (num - 491.67)*(5/9)
+
+    return(temp)
+
+

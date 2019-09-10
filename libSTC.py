@@ -14,13 +14,18 @@ def tabela_fluidos(nome_fluido,t1,t2):
 			- t2: temperatura de saida do fluido [ºC];
 
 	Outputs: 
-			- list de dimensao (1,5) contendo rho, cp, kf, mi, pr [S.I.] nesta ordem.
+			- list de dimensao (1,5) contendo rho, cp, kf, mi, pr, aviso [S.I.] nesta ordem.
 	Author: Vinicius e Andre
 	'''
 
 	#print(nome_fluido)
 	db = pd.read_csv("database/fluidos/%s.csv" %nome_fluido, sep = ";") #Carrega arquivo csv
 	db = db.sort_values(by=['Temperatura'])   #Ordena os dados p/ nao dar pau no interp
+
+	aviso = 0
+	#aviso = 0: Valor de temperatura avaliada dentro do intervalo do banco de dados
+	#aviso = 1: Valor de temperatura avaliada abaixo do intervalo do banco de dados
+	#aviso = 2: Valor de temperatura avaliada acima do intervalo do banco de dados
 
 
 	T=db.iloc[0 : db.shape[0] ,0]        					# Corta matriz db da linha 0 até ultima linha
@@ -52,8 +57,10 @@ def tabela_fluidos(nome_fluido,t1,t2):
 		#Avisos paroquiais
 		if tm<Tmin:
 			print("T médio (%.2f) abaixo de T minimo (%.2f)\n" %(tm, Tmin))
+			aviso = 1
 		elif tm>Tmax:
 			print("T médio (%.2f) acima de T máximo (%.2f)\n" %(tm, Tmax))
+			aviso = 2
 	
 	#Valores interpolados
 	else:
@@ -63,7 +70,7 @@ def tabela_fluidos(nome_fluido,t1,t2):
 		mi=np.interp(tm,T,Mi)
 		pr=np.interp(tm,T,Pr)
 	
-	return [rho,cp,kf,mi,pr]   #Fim da funcao
+	return [rho,cp,kf,mi,pr, aviso]   #Fim da funcao
 
 def Nome_fluidos():
 

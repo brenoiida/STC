@@ -3,6 +3,7 @@
     <file>Plate_heat_exchanger.jpg</file>
   </qresource>
   <qresource prefix="mainTitle">
+    <file>warning.png</file>
     <file>unifei_logo.png</file>
     <file>logo.jpg</file>
     <file>mainTitle.png</file>

@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from scipy import interpolate
 import os
 import math
 
@@ -17,8 +18,10 @@ def tabela_fluidos(nome_fluido,t1,t2):
 	Author: Vinicius e Andre
 	'''
 
-	print(nome_fluido)
+	#print(nome_fluido)
 	db = pd.read_csv("database/fluidos/%s.csv" %nome_fluido, sep = ";") #Carrega arquivo csv
+	db = db.sort_values(by=['Temperatura'])   #Ordena os dados p/ nao dar pau no interp
+
 
 	T=db.iloc[0 : db.shape[0] ,0]        					# Corta matriz db da linha 0 até ultima linha
 	Rho=db.iloc[0 : db.shape[0] ,1]							# (db.shape[0]) na coluna respectiva
@@ -27,24 +30,38 @@ def tabela_fluidos(nome_fluido,t1,t2):
 	Mi=db.iloc[0 : db.shape[0] ,4]
 	Pr=db.iloc[0 : db.shape[0] ,5]
 	#print (T)
-	Tmin = T.iloc[0]			# Pega a menor e a maior temperatura do banco de dados
-	Tmax = T.iloc[-1]
+	Tmin = T.min()			# Pega a menor e a maior temperatura do banco de dados
+	Tmax = T.max()
 	#print (Tmin,Tmax)
 	tm = (t1+t2)/2
 
-	# anti-anta
+	#Valores extrapolados
+	if tm<Tmin or tm>Tmax:
+		f_rho = interpolate.interp1d(T, Rho, fill_value='extrapolate')
+		f_cp = interpolate.interp1d(T, Cp, fill_value='extrapolate')
+		f_kf = interpolate.interp1d(T, Kf, fill_value='extrapolate')
+		f_mi = interpolate.interp1d(T, Mi, fill_value='extrapolate')
+		f_pr = interpolate.interp1d(T, Pr, fill_value='extrapolate')
 
-	if tm< Tmin:
-		print("Valor de T médio abaixo do T mín do banco de dados: %.2f °C "%Tmin)
-	elif tm> Tmax:
-		print("Valor de T médio acima do T máx do banco de dados: %.2f °C "%Tmax)
+		rho = f_rho(tm)
+		cp = f_cp(tm)
+		kf = f_kf(tm)
+		mi = f_mi(tm)
+		pr = f_pr(tm)
 
-	print("Temperatura média: %.2f °C"%tm)
-	rho=np.interp(tm,T,Rho)								#Interpola no valor tm, nos dados Rho vs T
-	cp=np.interp(tm,T,Cp)
-	kf=np.interp(tm,T,Kf)
-	mi=np.interp(tm,T,Mi)
-	pr=np.interp(tm,T,Pr)
+		#Avisos paroquiais
+		if tm<Tmin:
+			print("T médio (%.2f) abaixo de T minimo (%.2f)\n" %(tm, Tmin))
+		elif tm>Tmax:
+			print("T médio (%.2f) acima de T máximo (%.2f)\n" %(tm, Tmax))
+	
+	#Valores interpolados
+	else:
+		rho=np.interp(tm,T,Rho)	#Interpola no valor tm, nos dados Rho vs T
+		cp=np.interp(tm,T,Cp)
+		kf=np.interp(tm,T,Kf)
+		mi=np.interp(tm,T,Mi)
+		pr=np.interp(tm,T,Pr)
 	
 	return [rho,cp,kf,mi,pr]   #Fim da funcao
 
@@ -91,6 +108,7 @@ def dtln(T1, T2, t1, t2):
 
 	Outputs: 
 			- deltaTln
+	Authors: Pedro e Matheus
 	'''
 
     if T1 > T2 and t1 < t2 :

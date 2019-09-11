@@ -23,12 +23,13 @@ import libSTC
 
 Para executar o algoritmo de testes em sua maquina:
 ```
-py runTest.py
+py main.py
 ```
 
 ## Construído com
 
 * [Numpy](https://numpy.org/) - Framework de cálculo baseada
+* [Scipy](https://www.scipy.org/) - Rotinas de tratamento de dados
 * [Pandas](https://pandas.pydata.org/) - Gerenciamento do banco de dados
 
 ## Autores
@@ -37,6 +38,7 @@ py runTest.py
 * **M. Abreu** - *Gosta de fazer e deletar arquivos* - [Linkedin](https://www.spacex.com/)
 * **B. Iida** - *Vem calculando a integral do desvio absoluto da entropia desde 1997* - [Lattes](https://pt.wikipedia.org/wiki/Uma_Mente_Brilhante)
 * **P. Siqueira** - *fala umas coisa engraçada* - [Vlog](https://onepieceex.net/)
+* **T. Matos** - *nego é fiel* - [Perfil do HBO Kids](https://bancodeseries.com.br/index.php?action=userPage&uid=1000049024)
 * **O arquiteto** - *Initial work* - [O arquiteto](https://matrix.fandom.com/wiki/The_Architect)
 
 Desligados da matrix:

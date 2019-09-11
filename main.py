@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+#AVISO: Os codigos de autoria humana estão a partir da linha 1228
+
 # Form implementation generated from reading ui file 'Tela.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.3
@@ -1223,13 +1225,10 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.radioButton, self.pushButton)
         MainWindow.setTabOrder(self.pushButton, self.f2VerDados_btn)
 
-# -----------------------------------------------
+###############################################################################
+        #   Codigos de autoria humana
         #   Adicionando funcionalidade aos botoes
-        #
-        #   No primeiro bloco abaixo sao conectados os botoes a funcao oMensageiro que por sua vez faz o intermedio 
-        #   GUI x funcoes
-        #
-        # -----------------------------------------------
+###############################################################################
     
         #Carregamento inicial
 
@@ -1252,49 +1251,58 @@ class Ui_MainWindow(object):
             self.f1Tm_label.setText("")
             self.f2Tm_label.setText("")
 
+            #######################################################################
+            ############### GATILHOS PRAS FUNÇÕES #################################
+            #######################################################################
 
-        #self.btn_origem.clicked.connect(self.correioEnderecoOrigem)   -- SEM PARAMETROS
-        #Ligacao pros botoes
-        self.projeto_btn.clicked.connect(partial(self.oMensageiro, funcao=str("projetopage_clicked")))
-        self.fluido1_btn.clicked.connect(partial(self.oMensageiro, funcao=str("fluido1page_clicked")))
-        self.fluido2_btn.clicked.connect(partial(self.oMensageiro, funcao=str("fluido2page_clicked")))
-        self.trocador_btn.clicked.connect(partial(self.oMensageiro, funcao=str("trocadorpage_clicked")))
-        self.resultados_btn.clicked.connect(partial(self.oMensageiro, funcao=str("resultados_page_clicked")))
+            #self.btn_origem.clicked.connect(self.correioEnderecoOrigem)   -- SEM PARAMETROS
+            #Ligacao pros botoes
+            self.projeto_btn.clicked.connect(partial(self.trocaTela, tela=str("projetoTela")))
+            self.fluido1_btn.clicked.connect(partial(self.trocaTela, tela=str("fluido1Tela")))
+            self.fluido2_btn.clicked.connect(partial(self.trocaTela, tela=str("fluido2Tela")))
+            self.trocador_btn.clicked.connect(partial(self.trocaTela, tela=str("trocadorTela")))
+            self.resultados_btn.clicked.connect(partial(self.trocaTela, tela=str("resultadosTela")))
 
-        #Combobox de fluidos
-        self.f1Fluids_combobox.currentIndexChanged.connect(partial(self.oMensageiro, funcao=str("f1Att")))
-        self.f2Fluids_comboBox.currentIndexChanged.connect(partial(self.oMensageiro, funcao=str("f2Att")))
-        self.f1T1_entry.valueChanged.connect(partial(self.oMensageiro, funcao=str("f1Att")))
-        self.f1T2_entry.valueChanged.connect(partial(self.oMensageiro, funcao=str("f1Att")))
-        self.f2T1_entry.valueChanged.connect(partial(self.oMensageiro, funcao=str("f2Att")))
-        self.f2T2_entry.valueChanged.connect(partial(self.oMensageiro, funcao=str("f2Att")))
+            #Combobox de fluidos
+            self.f1Fluids_combobox.currentIndexChanged.connect(partial(self.atualizaDadosFluido, fluido=1))
+            self.f2Fluids_comboBox.currentIndexChanged.connect(partial(self.atualizaDadosFluido, fluido=2))
+            self.f1T1_entry.valueChanged.connect(partial(self.atualizaDadosFluido, fluido=1))
+            self.f1T2_entry.valueChanged.connect(partial(self.atualizaDadosFluido, fluido=1))
+            self.f2T1_entry.valueChanged.connect(partial(self.atualizaDadosFluido, fluido=2))
+            self.f2T2_entry.valueChanged.connect(partial(self.atualizaDadosFluido, fluido=2))
 
-        #Combobox de unidades de temperatura
-        self.f1T1Unit_comboBox.currentIndexChanged.connect(partial(self.oMensageiro, funcao=str("f1Att")))
-        self.f2T1Unit_comboBox.currentIndexChanged.connect(partial(self.oMensageiro, funcao=str("f2Att")))
+            #Combobox de unidades de temperatura
+            self.f1T1Unit_comboBox.currentIndexChanged.connect(partial(self.atualizaDadosFluido, fluido=1))
+            self.f2T1Unit_comboBox.currentIndexChanged.connect(partial(self.atualizaDadosFluido, fluido=2))
 
-    def oMensageiro(self, funcao):
-        #Essa funcao faz o intermedio entre bibliotecas e tela grafica
+    ###################################################################################
+    ### FUNÇÕES QUE INTERMEDIAM TELA GRAFICA vs ROTINAS DE CALCULO E BANCO DE DADOS ###
+    ###################################################################################
 
-        #Trocas de tela
-        if funcao == "projetopage_clicked":
+    def trocaTela(self, tela):
+        '''Descr: Funcao que muda a tela ativa do programa
+        '''
+        if tela=='projetoTela':
             self.window_frame.setCurrentIndex(0)
             self.title_label.setText("Projeto")
-        elif funcao== "fluido1page_clicked":
+        elif tela=="fluido1Tela":
             self.window_frame.setCurrentIndex(1)
             self.title_label.setText("Fluido 1")
-        elif funcao == "fluido2page_clicked":
+        elif tela=="fluido2Tela":
             self.window_frame.setCurrentIndex(2)
             self.title_label.setText("Fluido 2")
-        elif funcao == "trocadorpage_clicked":
+        elif tela=="trocadorTela":
             self.window_frame.setCurrentIndex(3)
             self.title_label.setText("Trocador")
-        elif funcao == "resultados_page_clicked":
+        elif tela=="resultadosTela":
             self.window_frame.setCurrentIndex(4)
             self.title_label.setText("Resultados")
 
-        #Carrega propriedades do fluido
-        elif funcao == "f1Att":
+    def atualizaDadosFluido(self, fluido):
+        '''Descr: Carrega a propriedade do fluido selecionado apresentando os valores na tela grafica
+        '''
+        #Carrega propriedades do fluido 1
+        if fluido == 1:
             fluid = self.f1Fluids_combobox.currentText()
 
             T1 = float(self.f1T1_entry.value())
@@ -1330,7 +1338,8 @@ class Ui_MainWindow(object):
                 self.f1Warning_label.hide()
                 self.f1Tm_label.setText("Fluido avaliado em %.2f %s" %(tm, Tunidade))
 
-        elif funcao == "f2Att":
+        #Carrega as propriedades do fluido 2
+        elif fluido == 2:
             fluid = self.f2Fluids_comboBox.currentText()
             T1 = float(self.f2T1_entry.value())
             T2 = float(self.f2T2_entry.value())
@@ -1363,8 +1372,6 @@ class Ui_MainWindow(object):
             elif fluid=="Personalizado":
                 self.f2Warning_label.hide()
                 self.f2Tm_label.setText("Fluido avaliado em %.2f %s" %(tm, Tunidade))
-
-
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

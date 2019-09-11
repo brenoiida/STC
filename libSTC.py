@@ -56,10 +56,10 @@ def tabela_fluidos(nome_fluido,t1,t2):
 
 		#Avisos paroquiais
 		if tm<Tmin:
-			print("T médio (%.2f) abaixo de T minimo (%.2f)\n" %(tm, Tmin))
+			#print("T médio (%.2f) abaixo de T minimo (%.2f)\n" %(tm, Tmin))
 			aviso = 1
 		elif tm>Tmax:
-			print("T médio (%.2f) acima de T máximo (%.2f)\n" %(tm, Tmax))
+			#print("T médio (%.2f) acima de T máximo (%.2f)\n" %(tm, Tmax))
 			aviso = 2
 	
 	#Valores interpolados
@@ -190,7 +190,6 @@ def tabela_condutividade(nome_material):
     Apoio Moral: Matheus
     '''
     db = pd.read_csv("database/materiais/k.csv", sep = ";") #Carrega o arquivo csv
-    print(db)
 
     Material = db.iloc[0:db.shape[0],0]
     k = db.iloc[0:db.shape[0],1]
@@ -284,4 +283,24 @@ def ConverterTemperatura(esc, num):
 
     return(temp)
 
-
+def ConverterVazão(mod, uni,rho):
+	''' Descr: Converte o valor da vazão fornecida para vazão massica no S.I. 
+	Input: 
+			- mod: Valor da vazão fornecida (magnitude)
+			- uni: Unidade da vazão fornecida
+			- rho: Massa específica do fluído
+	Outputs:
+			- vaz: Vazão convertida em kg/s
+	Author: - Thenysson'''
+	
+       if uni == 'kg/s':
+              vaz = mod
+       elif uni =='kg/h':
+              vaz = mod/3600
+       elif uni == 'g/s':
+              vaz = mod/1000  
+       elif uni =='L/s':
+              vaz = (mod*rho)/1000   
+       elif uni =='m3/h':
+              vaz = (mod*rho)/3600      
+       return vaz

@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+
+
 #AVISO: Os codigos de autoria humana estão a partir da linha 1228
+
+
 
 # Form implementation generated from reading ui file 'Tela.ui'
 #
@@ -180,7 +184,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.gridLayout)
         self.gridLayout_4.addWidget(self.buttons_frame, 1, 0, 1, 1)
         self.toolbar = QtWidgets.QFrame(self.centralwidget)
-        self.toolbar.setMaximumSize(QtCore.QSize(16777215, 40))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.toolbar.sizePolicy().hasHeightForWidth())
+        self.toolbar.setSizePolicy(sizePolicy)
+        self.toolbar.setMinimumSize(QtCore.QSize(0, 33))
+        self.toolbar.setMaximumSize(QtCore.QSize(16777215, 61))
         self.toolbar.setStyleSheet("background-color: rgb(48, 143, 123);\n"
 "color: rgb(255, 255, 255);\n"
 "")
@@ -191,12 +201,55 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton_6 = QtWidgets.QPushButton(self.toolbar)
-        self.pushButton_6.setMaximumSize(QtCore.QSize(60, 16777215))
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.ClickFocus)
-        self.pushButton_6.setFlat(False)
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.horizontalLayout.addWidget(self.pushButton_6)
+        self.newFile_btn = QtWidgets.QPushButton(self.toolbar)
+        self.newFile_btn.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.newFile_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.newFile_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.newFile_btn.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("images/newFile_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.newFile_btn.setIcon(icon)
+        self.newFile_btn.setIconSize(QtCore.QSize(42, 23))
+        self.newFile_btn.setFlat(True)
+        self.newFile_btn.setObjectName("newFile_btn")
+        self.horizontalLayout.addWidget(self.newFile_btn)
+        self.openFile_btn = QtWidgets.QPushButton(self.toolbar)
+        self.openFile_btn.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.openFile_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.openFile_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.openFile_btn.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("images/openFile_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.openFile_btn.setIcon(icon1)
+        self.openFile_btn.setIconSize(QtCore.QSize(34, 23))
+        self.openFile_btn.setFlat(True)
+        self.openFile_btn.setObjectName("openFile_btn")
+        self.horizontalLayout.addWidget(self.openFile_btn)
+        self.saveFile_btn = QtWidgets.QPushButton(self.toolbar)
+        self.saveFile_btn.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.saveFile_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.saveFile_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.saveFile_btn.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("images/save_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.saveFile_btn.setIcon(icon2)
+        self.saveFile_btn.setIconSize(QtCore.QSize(26, 23))
+        self.saveFile_btn.setDefault(False)
+        self.saveFile_btn.setFlat(True)
+        self.saveFile_btn.setObjectName("saveFile_btn")
+        self.horizontalLayout.addWidget(self.saveFile_btn)
+        self.calculate_btn = QtWidgets.QPushButton(self.toolbar)
+        self.calculate_btn.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.calculate_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.calculate_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.calculate_btn.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("images/calculateIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.calculate_btn.setIcon(icon3)
+        self.calculate_btn.setIconSize(QtCore.QSize(31, 23))
+        self.calculate_btn.setFlat(True)
+        self.calculate_btn.setObjectName("calculate_btn")
+        self.horizontalLayout.addWidget(self.calculate_btn)
         self.title_label = QtWidgets.QLabel(self.toolbar)
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
@@ -248,7 +301,7 @@ class Ui_MainWindow(object):
         self.projeto_page.setSizePolicy(sizePolicy)
         self.projeto_page.setObjectName("projeto_page")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.projeto_page)
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 20)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.titulo_frame = QtWidgets.QFrame(self.projeto_page)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
@@ -290,6 +343,8 @@ class Ui_MainWindow(object):
         self.label_17.setObjectName("label_17")
         self.verticalLayout.addWidget(self.label_17)
         self.verticalLayout_5.addWidget(self.titulo_frame)
+        spacerItem = QtWidgets.QSpacerItem(20, 53, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
+        self.verticalLayout_5.addItem(spacerItem)
         self.projeto_frame = QtWidgets.QFrame(self.projeto_page)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -327,10 +382,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.radioButton)
         self.radioButton_3 = QtWidgets.QRadioButton(self.page)
         self.radioButton_3.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.radioButton_3.setCheckable(False)
         self.radioButton_3.setObjectName("radioButton_3")
         self.verticalLayout_4.addWidget(self.radioButton_3)
         self.radioButton_2 = QtWidgets.QRadioButton(self.page)
         self.radioButton_2.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.radioButton_2.setCheckable(False)
         self.radioButton_2.setObjectName("radioButton_2")
         self.verticalLayout_4.addWidget(self.radioButton_2)
         self.toolBox.addItem(self.page, "")
@@ -339,15 +396,22 @@ class Ui_MainWindow(object):
         self.page_2.setObjectName("page_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.page_2)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.pushButton = QtWidgets.QPushButton(self.page_2)
-        self.pushButton.setFocusPolicy(QtCore.Qt.ClickFocus)
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout_3.addWidget(self.pushButton)
+        self.abrirProjeto_btn = QtWidgets.QPushButton(self.page_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.abrirProjeto_btn.sizePolicy().hasHeightForWidth())
+        self.abrirProjeto_btn.setSizePolicy(sizePolicy)
+        self.abrirProjeto_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.abrirProjeto_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.abrirProjeto_btn.setFlat(True)
+        self.abrirProjeto_btn.setObjectName("abrirProjeto_btn")
+        self.verticalLayout_3.addWidget(self.abrirProjeto_btn)
         self.toolBox.addItem(self.page_2, "")
         self.horizontalLayout_2.addWidget(self.toolBox)
         self.verticalLayout_5.addWidget(self.projeto_frame)
         self.label_34 = QtWidgets.QLabel(self.projeto_page)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_34.sizePolicy().hasHeightForWidth())
@@ -356,7 +420,8 @@ class Ui_MainWindow(object):
         font.setFamily("Segoe UI")
         font.setPointSize(12)
         self.label_34.setFont(font)
-        self.label_34.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_34.setStyleSheet("color: rgb(153, 153, 153);")
+        self.label_34.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
         self.label_34.setObjectName("label_34")
         self.verticalLayout_5.addWidget(self.label_34)
         self.window_frame.addWidget(self.projeto_page)
@@ -760,15 +825,15 @@ class Ui_MainWindow(object):
         self.f1Warning_label.setObjectName("f1Warning_label")
         self.gridLayout_2.addWidget(self.f1Warning_label, 6, 3, 1, 1)
         self.f1Tm_label = QtWidgets.QLabel(self.fluido1_page)
-        self.f1Tm_label.setMinimumSize(QtCore.QSize(166, 0))
-        self.f1Tm_label.setMaximumSize(QtCore.QSize(166, 16777215))
+        self.f1Tm_label.setMinimumSize(QtCore.QSize(155, 0))
+        self.f1Tm_label.setMaximumSize(QtCore.QSize(155, 16777215))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(9)
         self.f1Tm_label.setFont(font)
         self.f1Tm_label.setToolTip("")
         self.f1Tm_label.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.f1Tm_label.setAlignment(QtCore.Qt.AlignLeft|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.f1Tm_label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.f1Tm_label.setObjectName("f1Tm_label")
         self.gridLayout_2.addWidget(self.f1Tm_label, 6, 4, 1, 1)
         self.window_frame.addWidget(self.fluido1_page)
@@ -1131,8 +1196,8 @@ class Ui_MainWindow(object):
         self.f2Warning_label.setObjectName("f2Warning_label")
         self.gridLayout_5.addWidget(self.f2Warning_label, 5, 3, 1, 1)
         self.f2Tm_label = QtWidgets.QLabel(self.fluido2_page)
-        self.f2Tm_label.setMinimumSize(QtCore.QSize(166, 0))
-        self.f2Tm_label.setMaximumSize(QtCore.QSize(166, 16777215))
+        self.f2Tm_label.setMinimumSize(QtCore.QSize(155, 0))
+        self.f2Tm_label.setMaximumSize(QtCore.QSize(155, 16777215))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(9)
@@ -1198,8 +1263,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.window_frame.setCurrentIndex(2)
-        self.toolBox.setCurrentIndex(0)
+        self.window_frame.setCurrentIndex(1)
+        self.toolBox.setCurrentIndex(1)
         self.toolBox.layout().setSpacing(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.f1T1_entry, self.f1T2_entry)
@@ -1222,15 +1287,15 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.pushButton_2, self.radioButton_2)
         MainWindow.setTabOrder(self.radioButton_2, self.radioButton_3)
         MainWindow.setTabOrder(self.radioButton_3, self.radioButton)
-        MainWindow.setTabOrder(self.radioButton, self.pushButton)
-        MainWindow.setTabOrder(self.pushButton, self.f2VerDados_btn)
+        MainWindow.setTabOrder(self.radioButton, self.abrirProjeto_btn)
+        MainWindow.setTabOrder(self.abrirProjeto_btn, self.f2VerDados_btn)
 
 ###############################################################################
         #   Codigos de autoria humana
         #   Adicionando funcionalidade aos botoes
 ###############################################################################
     
-        #Carregamento inicial
+        #Carregamento inicial e gatilhos pras funções
 
         if 1:     #Carregando fluidos pro sistema
             fluidos = Nome_fluidos()
@@ -1309,7 +1374,6 @@ class Ui_MainWindow(object):
             T2 = float(self.f1T2_entry.value())
             Tunidade = self.f1T1Unit_comboBox.currentText()     #Adquire temperaturas e unidade
             self.f1TUnit_label.setText(Tunidade)                #Atualiza unidades
-            print(Tunidade)
             tm = (T1+T2)/2.0
 
             if fluid != "Personalizado":
@@ -1373,9 +1437,14 @@ class Ui_MainWindow(object):
                 self.f2Warning_label.hide()
                 self.f2Tm_label.setText("Fluido avaliado em %.2f %s" %(tm, Tunidade))
 
+    def salvarProjeto(self):
+        #Adquirir dados
+        
+        return 0
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "STC - v0.0"))
         self.fluido2_btn.setText(_translate("MainWindow", "Fluido 2"))
         self.fluido2_btn.setShortcut(_translate("MainWindow", "3"))
         self.fluido1_btn.setText(_translate("MainWindow", "Fluido 1"))
@@ -1386,8 +1455,7 @@ class Ui_MainWindow(object):
         self.trocador_btn.setShortcut(_translate("MainWindow", "4"))
         self.projeto_btn.setText(_translate("MainWindow", "Projeto"))
         self.projeto_btn.setShortcut(_translate("MainWindow", "1"))
-        self.pushButton_6.setText(_translate("MainWindow", "Calculate"))
-        self.title_label.setText(_translate("MainWindow", "title"))
+        self.title_label.setText(_translate("MainWindow", "Projeto"))
         self.pushButton_2.setText(_translate("MainWindow", "STC"))
         self.mainTitle_label.setText(_translate("MainWindow", "STC"))
         self.label_17.setText(_translate("MainWindow", "Simulador de trocador de calor"))
@@ -1395,9 +1463,9 @@ class Ui_MainWindow(object):
         self.radioButton_3.setText(_translate("MainWindow", "Bitubular"))
         self.radioButton_2.setText(_translate("MainWindow", "Casco e tubo"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), _translate("MainWindow", "Novo projeto"))
-        self.pushButton.setText(_translate("MainWindow", "Abrir"))
+        self.abrirProjeto_btn.setText(_translate("MainWindow", "Abrir projeto"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), _translate("MainWindow", "Carregar projeto"))
-        self.label_34.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/logo.jpg\"/>STC EQI016 - Engenharia Química - Universidade Federal de Itajubá (2019) <img src=\"images/unifei_logo.png\"/></p></body></html>"))
+        self.label_34.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/logo.jpg\"/>Made with love by <a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\">STeamC</span></a><a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\"/></a><img src=\"images/unifei_logo.png\"/></p></body></html>"))
         self.f1Fluids_combobox.setItemText(0, _translate("MainWindow", "Personalizado"))
         self.f1Fluids_combobox.setItemText(1, _translate("MainWindow", "Água"))
         self.f1Fluids_combobox.setItemText(2, _translate("MainWindow", "Amonia"))

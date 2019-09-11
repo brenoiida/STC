@@ -292,15 +292,15 @@ def ConverterVazão(mod, uni,rho):
 	Outputs:
 			- vaz: Vazão convertida em kg/s
 	Author: - Thenysson'''
-	
-       if uni == 'kg/s':
-              vaz = mod
-       elif uni =='kg/h':
-              vaz = mod/3600
-       elif uni == 'g/s':
-              vaz = mod/1000  
-       elif uni =='L/s':
-              vaz = (mod*rho)/1000   
-       elif uni =='m3/h':
-              vaz = (mod*rho)/3600      
-       return vaz
+
+	if uni == 'kg/s':
+		vaz = mod
+	elif uni =='kg/h':
+		vaz = mod/3600
+	elif uni == 'g/s':
+		vaz = mod/1000
+	elif uni =='L/s':
+		vaz = (mod*rho)/1000
+	elif uni =='m3/h':
+	    vaz = (mod*rho)/3600
+	return vaz

@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>STC - v0.0</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(237, 237, 237);</string>
@@ -412,10 +412,22 @@ color: rgb(48, 143, 123);</string>
       </item>
       <item row="0" column="2">
        <widget class="QFrame" name="toolbar">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>33</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>40</height>
+          <height>61</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -446,21 +458,133 @@ color: rgb(255, 255, 255);
           <number>0</number>
          </property>
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="newFile_btn">
            <property name="maximumSize">
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>16777215</height>
             </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
            <property name="focusPolicy">
             <enum>Qt::ClickFocus</enum>
            </property>
            <property name="text">
-            <string>Calculate</string>
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>images/newFile_icon.png</normaloff>images/newFile_icon.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>42</width>
+             <height>23</height>
+            </size>
            </property>
            <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="openFile_btn">
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>images/openFile_icon.png</normaloff>images/openFile_icon.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>34</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveFile_btn">
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>images/save_icon.png</normaloff>images/save_icon.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>26</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="default">
             <bool>false</bool>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="calculate_btn">
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>images/calculateIcon.png</normaloff>images/calculateIcon.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>31</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -473,7 +597,7 @@ color: rgb(255, 255, 255);
             </font>
            </property>
            <property name="text">
-            <string>title</string>
+            <string>Projeto</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -568,7 +692,7 @@ color: rgb(48, 143, 123);</string>
            <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>0</number>
+           <number>20</number>
           </property>
           <item>
            <widget class="QFrame" name="titulo_frame">
@@ -641,6 +765,22 @@ color: rgb(48, 143, 123);</string>
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Maximum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>53</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QFrame" name="projeto_frame">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -694,7 +834,7 @@ color: rgb(48, 143, 123);</string>
                 <enum>QFrame::Box</enum>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>1</number>
                </property>
                <property name="tabSpacing">
                 <number>1</number>
@@ -704,7 +844,7 @@ color: rgb(48, 143, 123);</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>132</width>
+                  <width>164</width>
                   <height>81</height>
                  </rect>
                 </property>
@@ -736,6 +876,9 @@ color: rgb(48, 143, 123);</string>
                    <property name="text">
                     <string>Bitubular</string>
                    </property>
+                   <property name="checkable">
+                    <bool>false</bool>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -746,6 +889,9 @@ color: rgb(48, 143, 123);</string>
                    <property name="text">
                     <string>Casco e tubo</string>
                    </property>
+                   <property name="checkable">
+                    <bool>false</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -755,8 +901,8 @@ color: rgb(48, 143, 123);</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>93</width>
-                  <height>41</height>
+                  <width>164</width>
+                  <height>69</height>
                  </rect>
                 </property>
                 <attribute name="label">
@@ -764,12 +910,24 @@ color: rgb(48, 143, 123);</string>
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_3">
                  <item>
-                  <widget class="QPushButton" name="pushButton">
+                  <widget class="QPushButton" name="abrirProjeto_btn">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
                    <property name="focusPolicy">
                     <enum>Qt::ClickFocus</enum>
                    </property>
                    <property name="text">
-                    <string>Abrir</string>
+                    <string>Abrir projeto</string>
+                   </property>
+                   <property name="flat">
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -783,7 +941,7 @@ color: rgb(48, 143, 123);</string>
           <item>
            <widget class="QLabel" name="label_34">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -794,11 +952,14 @@ color: rgb(48, 143, 123);</string>
               <pointsize>12</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(153, 153, 153);</string>
+            </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/mainTitle/logo.jpg&quot;/&gt;STC EQI016 - Engenharia Química - Universidade Federal de Itajubá (2019) &lt;img src=&quot;:/mainTitle/unifei_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/mainTitle/logo.jpg&quot;/&gt;Made with love by &lt;a href=&quot;https://github.com/Zamariolo/STC&quot;&gt;&lt;span style=&quot; color:#308f7b;&quot;&gt;STeamC&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/Zamariolo/STC&quot;&gt;&lt;span style=&quot; color:#308f7b;&quot;/&gt;&lt;/a&gt;&lt;img src=&quot;:/mainTitle/unifei_logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <set>Qt::AlignBottom|Qt::AlignHCenter</set>
             </property>
            </widget>
           </item>
@@ -2724,7 +2885,7 @@ color: rgb(0, 100, 148);</string>
   <tabstop>radioButton_2</tabstop>
   <tabstop>radioButton_3</tabstop>
   <tabstop>radioButton</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>abrirProjeto_btn</tabstop>
   <tabstop>f2VerDados_btn</tabstop>
  </tabstops>
  <resources>

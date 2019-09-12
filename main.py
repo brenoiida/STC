@@ -2,7 +2,7 @@
 
 
 
-#AVISO: Os codigos de autoria humana estão a partir da linha 1228
+#AVISO: Os codigos de autoria humana estão a partir da linha 1293
 
 
 
@@ -1310,6 +1310,12 @@ class Ui_MainWindow(object):
             self.f1Fluids_combobox.addItems(list_fluidos)
             self.f2Fluids_comboBox.addItems(list_fluidos)
 
+            #Widgets que terao valores salvos no arquivo .stc
+            spinBoxSalvos = ['f1T1_entry', 'f1T2_entry', 'f2T1_entry', 'f2T2_entry', 'f1Cp_spinBox', 'f1Rho_spinBox', 'f1Mi_spinbox', 'f1Kf_spinbox', 'f1R_spinbox', 'f2Cp_spinBox', 'f2Rho_spinBox', 'f2Mi_spinBox', 'f2K_spinBox', 'f2R_spinBox', 'f1Flow_entry', 'f2Flow_entry']
+            comboBoxSalvos = ['f1T1Unit_comboBox','f2T1Unit_comboBox', 'f1FlowUnit_comboBox', 'f1Fluids_combobox', 'f2FlowUnit_comboBox', 'f2Fluids_comboBox']
+            #Nome do projeto
+            self.nomeProjeto = "UmNomeQueNinguemNuncaVaiEscolher"
+
             #Aspectos graficos iniciais
             self.f1Warning_label.hide()
             self.f2Warning_label.hide()
@@ -1340,6 +1346,10 @@ class Ui_MainWindow(object):
             self.f1T1Unit_comboBox.currentIndexChanged.connect(partial(self.atualizaDadosFluido, fluido=1))
             self.f2T1Unit_comboBox.currentIndexChanged.connect(partial(self.atualizaDadosFluido, fluido=2))
 
+            #Botoes de novo, abrir, salvar, calcular
+            self.saveFile_btn.clicked.connect(partial(self.salvarProjeto, spinBox=spinBoxSalvos, comboBox=comboBoxSalvos, funcao="salvarComo"))
+            self.openFile_btn.clicked.connect(partial(self.abrirProjeto))
+            self.newFile_btn.clicked.connect(partial(self.novoProjeto, spinBoxSalvos=spinBoxSalvos, comboBoxSalvos=comboBoxSalvos))
     ###################################################################################
     ### FUNÇÕES QUE INTERMEDIAM TELA GRAFICA vs ROTINAS DE CALCULO E BANCO DE DADOS ###
     ###################################################################################
@@ -1437,10 +1447,114 @@ class Ui_MainWindow(object):
                 self.f2Warning_label.hide()
                 self.f2Tm_label.setText("Fluido avaliado em %.2f %s" %(tm, Tunidade))
 
-    def salvarProjeto(self):
-        #Adquirir dados
+    def atualizaTituloPrograma(self, nomeArquivo):
+            #Obter somente o nome do projeto e nao do diretorio
+            index = 0
+            for letra in nomeArquivo:
+                index = index + 1
+                if letra=='/':
+                    finalIndex = index
+            #Atualizar titulo do programa
+            nomeProjeto = nomeArquivo[finalIndex:len(self.nomeProjeto)-4]
+            MainWindow.setWindowTitle("STC - v0.0 - %s" %nomeProjeto)
+
+    def salvarProjeto(self, spinBox, comboBox, funcao):
+
+        if funcao=="salvar":
+            if self.nomeProjeto == "UmNomeQueNinguemNuncaVaiEscolher":
+                funcao == "salvarComo"
+            else:
+                nomeArquivo = self.nomeProjeto
+
+        elif funcao=="salvarComo":
+            nomeArquivo = QtWidgets.QFileDialog.getSaveFileName(self.centralwidget, 'Salvar Arquivo', filter='*.stc')
+            nomeArquivo = str(nomeArquivo[0])
+            if nomeArquivo=="":
+                nomeArquivo = "defaultSTC.stc"
+
+        saveText = ""
+        #Salva dados dos comboBox'es
+        for nomeWidget in comboBox:
+            widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
+            saveText = saveText + nomeWidget + ","+ str(widget.currentIndex()) + "," + str(widget.currentText()) + "\n"
+
+        saveText = saveText + "[spinBox]\n"
+
+        #Salva dados dos spinBox'es
+        for nomeWidget in spinBox:
+            #print(nomeWidget)
+            widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
+            saveText = saveText + nomeWidget + "," + str(widget.value()) + "\n"
+
+        #Salvando em arquivo .stc
+        saveFile = open(r"%s" %nomeArquivo, "w")
+        saveFile.write(saveText)
+        saveFile.close()
+
+        self.nomeProjeto = nomeArquivo
         
-        return 0
+        #Obter somente o nome do projeto e nao do diretorio
+        index = 0
+        for letra in nomeArquivo:
+            index = index + 1
+            if letra=='/':
+                finalIndex = index
+        #Atualizar titulo do programa
+        nomeProjeto = nomeArquivo[finalIndex:len(self.nomeProjeto)-4]
+        MainWindow.setWindowTitle("STC - v0.0 - %s" %nomeProjeto)
+        print(self.nomeProjeto)
+
+    def abrirProjeto(self):
+        #Carregar arquivo
+        nomeArquivo = QtWidgets.QFileDialog.getOpenFileName(self.centralwidget, 'Abrir projeto', filter="*.stc")
+        nomeArquivo = str(nomeArquivo[0])
+        self.nomeProjeto = nomeArquivo
+        self.atualizaTituloPrograma(self.nomeProjeto)
+
+        #Percorre linha por linha do arquivo
+        with open(r"%s" %nomeArquivo) as file:
+            cont = 0
+            tipo = 'comboBox'
+            for line in file:
+                #Determinando o tipo de objeto
+                if line == "[spinBox]\n":
+                    tipo = 'spinBox'
+                    continue
+                #Percorrendo a linha
+                index = 0
+                for letra in line:
+                    if letra=="," and line!="[spinBox]":
+                        finalIndex = index
+                        break
+                    else:
+                        index = index + 1
+                    
+                nomeWidget = line[0:finalIndex]
+                widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
+                
+                #Verificando o tipo
+                if tipo=="spinBox":
+                    valor = float(line[finalIndex+1:len(line)-2])
+                    widget.setValue(valor)
+
+                elif tipo=="comboBox":
+                    valor = int(line[finalIndex+1])
+                    widget.setCurrentIndex(valor)
+                    antigoText = line[finalIndex+3:len(line)-1]
+                    if antigoText!=widget.currentText():
+                        print("Aparentemente um erro ocorreu ao encontrar o fluido")
+                        widget.setCurrentIndex(0)
+
+    def novoProjeto(self, comboBoxSalvos, spinBoxSalvos):
+        self.atualizaTituloPrograma("/*")
+        self.nomeProjeto = "UmNomeQueNinguemNuncaVaiEscolher"
+
+        for nomeWidget in comboBoxSalvos:
+            widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
+            widget.setCurrentIndex(0)
+        for nomeWidget in spinBoxSalvos:
+            widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
+            widget.setValue(0.0)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

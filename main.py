@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
+#AVISO: Os codigos de autoria humana estão a partir da linha 1438
 
-#AVISO: Os codigos de autoria humana estão a partir da linha 1293
 
 
 
@@ -202,9 +202,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.newFile_btn = QtWidgets.QPushButton(self.toolbar)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.newFile_btn.sizePolicy().hasHeightForWidth())
+        self.newFile_btn.setSizePolicy(sizePolicy)
         self.newFile_btn.setMaximumSize(QtCore.QSize(40, 16777215))
         self.newFile_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.newFile_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.newFile_btn.setStyleSheet("color: rgb(0, 0, 0);")
         self.newFile_btn.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("images/newFile_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -214,21 +220,33 @@ class Ui_MainWindow(object):
         self.newFile_btn.setObjectName("newFile_btn")
         self.horizontalLayout.addWidget(self.newFile_btn)
         self.openFile_btn = QtWidgets.QPushButton(self.toolbar)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.openFile_btn.sizePolicy().hasHeightForWidth())
+        self.openFile_btn.setSizePolicy(sizePolicy)
         self.openFile_btn.setMaximumSize(QtCore.QSize(40, 16777215))
         self.openFile_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.openFile_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.openFile_btn.setStyleSheet("color: rgb(0, 0, 0);")
         self.openFile_btn.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("images/openFile_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.openFile_btn.setIcon(icon1)
-        self.openFile_btn.setIconSize(QtCore.QSize(34, 23))
+        self.openFile_btn.setIconSize(QtCore.QSize(35, 23))
         self.openFile_btn.setFlat(True)
         self.openFile_btn.setObjectName("openFile_btn")
         self.horizontalLayout.addWidget(self.openFile_btn)
         self.saveFile_btn = QtWidgets.QPushButton(self.toolbar)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.saveFile_btn.sizePolicy().hasHeightForWidth())
+        self.saveFile_btn.setSizePolicy(sizePolicy)
         self.saveFile_btn.setMaximumSize(QtCore.QSize(40, 16777215))
         self.saveFile_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.saveFile_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.saveFile_btn.setStyleSheet("color: rgb(0, 0, 0);")
         self.saveFile_btn.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("images/save_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -238,19 +256,48 @@ class Ui_MainWindow(object):
         self.saveFile_btn.setFlat(True)
         self.saveFile_btn.setObjectName("saveFile_btn")
         self.horizontalLayout.addWidget(self.saveFile_btn)
+        self.saveAsFile_btn = QtWidgets.QPushButton(self.toolbar)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.saveAsFile_btn.sizePolicy().hasHeightForWidth())
+        self.saveAsFile_btn.setSizePolicy(sizePolicy)
+        self.saveAsFile_btn.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.saveAsFile_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.saveAsFile_btn.setToolTipDuration(-2)
+        self.saveAsFile_btn.setStyleSheet("color: rgb(0, 0, 0);")
+        self.saveAsFile_btn.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("images/Save-as-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.saveAsFile_btn.setIcon(icon3)
+        self.saveAsFile_btn.setIconSize(QtCore.QSize(23, 18))
+        self.saveAsFile_btn.setFlat(True)
+        self.saveAsFile_btn.setObjectName("saveAsFile_btn")
+        self.horizontalLayout.addWidget(self.saveAsFile_btn)
         self.calculate_btn = QtWidgets.QPushButton(self.toolbar)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.calculate_btn.sizePolicy().hasHeightForWidth())
+        self.calculate_btn.setSizePolicy(sizePolicy)
         self.calculate_btn.setMaximumSize(QtCore.QSize(40, 16777215))
         self.calculate_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.calculate_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.calculate_btn.setStyleSheet("color: rgb(0, 0, 0);")
         self.calculate_btn.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("images/calculateIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.calculate_btn.setIcon(icon3)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("images/calculateIcon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.calculate_btn.setIcon(icon4)
         self.calculate_btn.setIconSize(QtCore.QSize(31, 23))
         self.calculate_btn.setFlat(True)
         self.calculate_btn.setObjectName("calculate_btn")
         self.horizontalLayout.addWidget(self.calculate_btn)
         self.title_label = QtWidgets.QLabel(self.toolbar)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.title_label.sizePolicy().hasHeightForWidth())
+        self.title_label.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(10)
@@ -370,7 +417,7 @@ class Ui_MainWindow(object):
         self.toolBox.setFrameShape(QtWidgets.QFrame.Box)
         self.toolBox.setObjectName("toolBox")
         self.page = QtWidgets.QWidget()
-        self.page.setGeometry(QtCore.QRect(0, 0, 164, 81))
+        self.page.setGeometry(QtCore.QRect(0, 0, 132, 81))
         self.page.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.page.setObjectName("page")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.page)
@@ -480,6 +527,7 @@ class Ui_MainWindow(object):
         font.setFamily("Segoe UI")
         font.setPointSize(10)
         self.f1T1_entry.setFont(font)
+        self.f1T1_entry.setToolTip("")
         self.f1T1_entry.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 100, 148);")
         self.f1T1_entry.setFrame(False)
@@ -806,6 +854,7 @@ class Ui_MainWindow(object):
         self.f1VerDados_btn = QtWidgets.QPushButton(self.fluido1_page)
         self.f1VerDados_btn.setMaximumSize(QtCore.QSize(70, 16777215))
         self.f1VerDados_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.f1VerDados_btn.setToolTip("")
         self.f1VerDados_btn.setDefault(True)
         self.f1VerDados_btn.setFlat(True)
         self.f1VerDados_btn.setObjectName("f1VerDados_btn")
@@ -1290,6 +1339,102 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.radioButton, self.abrirProjeto_btn)
         MainWindow.setTabOrder(self.abrirProjeto_btn, self.f2VerDados_btn)
 
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "STC - v0.0"))
+        self.fluido2_btn.setText(_translate("MainWindow", "Fluido 2"))
+        self.fluido2_btn.setShortcut(_translate("MainWindow", "3"))
+        self.fluido1_btn.setText(_translate("MainWindow", "Fluido 1"))
+        self.fluido1_btn.setShortcut(_translate("MainWindow", "2"))
+        self.resultados_btn.setText(_translate("MainWindow", "Resultados"))
+        self.resultados_btn.setShortcut(_translate("MainWindow", "5"))
+        self.trocador_btn.setText(_translate("MainWindow", "Trocador"))
+        self.trocador_btn.setShortcut(_translate("MainWindow", "4"))
+        self.projeto_btn.setText(_translate("MainWindow", "Projeto"))
+        self.projeto_btn.setShortcut(_translate("MainWindow", "1"))
+        self.newFile_btn.setToolTip(_translate("MainWindow", "Novo projeto"))
+        self.openFile_btn.setToolTip(_translate("MainWindow", "Abrir projeto"))
+        self.saveFile_btn.setToolTip(_translate("MainWindow", "Salvar"))
+        self.saveAsFile_btn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Salvar como</p></body></html>"))
+        self.calculate_btn.setToolTip(_translate("MainWindow", "Calcular"))
+        self.title_label.setText(_translate("MainWindow", "Projeto"))
+        self.pushButton_2.setText(_translate("MainWindow", "STC"))
+        self.mainTitle_label.setText(_translate("MainWindow", "STC"))
+        self.label_17.setText(_translate("MainWindow", "Simulador de trocador de calor"))
+        self.radioButton.setText(_translate("MainWindow", "Trocador de placas"))
+        self.radioButton_3.setText(_translate("MainWindow", "Bitubular"))
+        self.radioButton_2.setText(_translate("MainWindow", "Casco e tubo"))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page), _translate("MainWindow", "Novo projeto"))
+        self.abrirProjeto_btn.setText(_translate("MainWindow", "Abrir projeto"))
+        self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), _translate("MainWindow", "Carregar projeto"))
+        self.label_34.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/logo.jpg\"/>Made with love by <a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\">STeamC</span></a><a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\"/></a><img src=\"images/unifei_logo.png\"/></p></body></html>"))
+        self.f1Fluids_combobox.setItemText(0, _translate("MainWindow", "Personalizado"))
+        self.f1Fluids_combobox.setItemText(1, _translate("MainWindow", "Água"))
+        self.f1Fluids_combobox.setItemText(2, _translate("MainWindow", "Amonia"))
+        self.f1Fluids_combobox.setItemText(3, _translate("MainWindow", "Benzeno"))
+        self.f1Fluids_combobox.setItemText(4, _translate("MainWindow", "Tolueno"))
+        self.f1Fluids_label.setText(_translate("MainWindow", "Selecionar fluido"))
+        self.f1T1Unit_comboBox.setItemText(0, _translate("MainWindow", "ºC"))
+        self.f1T1Unit_comboBox.setItemText(1, _translate("MainWindow", "K"))
+        self.f1T1Unit_comboBox.setItemText(2, _translate("MainWindow", "ºF"))
+        self.f1T1Unit_comboBox.setItemText(3, _translate("MainWindow", "R"))
+        self.f1Flow_label.setText(_translate("MainWindow", "Vazão do fluido"))
+        self.f1T1_label.setText(_translate("MainWindow", "Temperatura de entrada do fluido"))
+        self.f1R_label.setText(_translate("MainWindow", "Fator de incrustação (R)"))
+        self.f1Cp_label.setText(_translate("MainWindow", "Calor específico (Cp)"))
+        self.f1Mi_label.setText(_translate("MainWindow", "Viscosidade dinâmica (μ)"))
+        self.f1Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
+        self.f1RUnit_label.setText(_translate("MainWindow", "[(s.m².K)/J]"))
+        self.f1CpUnit_label.setText(_translate("MainWindow", "[kJ/(kg.K)]"))
+        self.f1MiUnit_label.setText(_translate("MainWindow", "[μPa.s]"))
+        self.f1Rho_label.setText(_translate("MainWindow", "<html><head/><body><p>Massa específica (ρ)</p></body></html>"))
+        self.f1RhoUnit_label.setText(_translate("MainWindow", "[kg/m³]"))
+        self.f1KUnit_label.setText(_translate("MainWindow", "[mW/(m.K)]"))
+        self.f1K_label.setText(_translate("MainWindow", "Condutividade térmica (k)"))
+        self.f1FlowUnit_comboBox.setItemText(0, _translate("MainWindow", "kg/h"))
+        self.f1FlowUnit_comboBox.setItemText(1, _translate("MainWindow", "g/s"))
+        self.f1FlowUnit_comboBox.setItemText(2, _translate("MainWindow", "L/s"))
+        self.f1FlowUnit_comboBox.setItemText(3, _translate("MainWindow", "m³/h"))
+        self.f1T2_label.setText(_translate("MainWindow", "Temperatura de saída do fluido"))
+        self.f1VerDados_btn.setText(_translate("MainWindow", "Ver dados"))
+        self.f1TUnit_label.setText(_translate("MainWindow", "ºC"))
+        self.f1Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
+        self.f1Tm_label.setText(_translate("MainWindow", "Fluido avaliado em 4000ºC"))
+        self.f2RUnit_label.setText(_translate("MainWindow", "[(s.m².K)/J]"))
+        self.f2T2_label.setText(_translate("MainWindow", "Temperatura de saída do fluido"))
+        self.f2KUnit_label.setText(_translate("MainWindow", "[mW/(m.K)]"))
+        self.f2T1_label.setText(_translate("MainWindow", "Temperatura de entrada do fluido"))
+        self.f2RhoUnit_label.setText(_translate("MainWindow", "[kg/m³]"))
+        self.f2Mi_label.setText(_translate("MainWindow", "Viscosidade dinâmica (μ)"))
+        self.f2MiUnit_label.setText(_translate("MainWindow", "[μPa.s]"))
+        self.f2R_label.setText(_translate("MainWindow", "Fator de incrustação (R)"))
+        self.f2K_label.setText(_translate("MainWindow", "Condutividade térmica (k)"))
+        self.f2Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
+        self.f2Flow_label.setText(_translate("MainWindow", "Vazão do fluido"))
+        self.f2T1Unit_comboBox.setItemText(0, _translate("MainWindow", "ºC"))
+        self.f2T1Unit_comboBox.setItemText(1, _translate("MainWindow", "K"))
+        self.f2T1Unit_comboBox.setItemText(2, _translate("MainWindow", "ºF"))
+        self.f2T1Unit_comboBox.setItemText(3, _translate("MainWindow", "R"))
+        self.f2FlowUnit_comboBox.setItemText(0, _translate("MainWindow", "kg/h"))
+        self.f2FlowUnit_comboBox.setItemText(1, _translate("MainWindow", "g/s"))
+        self.f2FlowUnit_comboBox.setItemText(2, _translate("MainWindow", "L/s"))
+        self.f2FlowUnit_comboBox.setItemText(3, _translate("MainWindow", "m³/h"))
+        self.f2Cp_label.setText(_translate("MainWindow", "Calor específico (Cp)"))
+        self.f2CpUnit_label.setText(_translate("MainWindow", "[kJ/(kg.K)]"))
+        self.f2Fluids_label.setText(_translate("MainWindow", "Selecionar fluido"))
+        self.f2Rho_label.setText(_translate("MainWindow", "<html><head/><body><p>Massa específica (ρ)</p></body></html>"))
+        self.f2Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
+        self.f2Tm_label.setText(_translate("MainWindow", "Fluido avaliado em 4000ºC"))
+        self.f2Fluids_comboBox.setItemText(0, _translate("MainWindow", "Personalizado"))
+        self.f2Fluids_comboBox.setItemText(1, _translate("MainWindow", "Água"))
+        self.f2Fluids_comboBox.setItemText(2, _translate("MainWindow", "Amonia"))
+        self.f2Fluids_comboBox.setItemText(3, _translate("MainWindow", "Benzeno"))
+        self.f2Fluids_comboBox.setItemText(4, _translate("MainWindow", "Tolueno"))
+        self.f2VerDados_btn.setText(_translate("MainWindow", "Ver dados"))
+        self.f2TUnit_label.setText(_translate("MainWindow", "ºC"))
+        self.label_19.setText(_translate("MainWindow", "Trocador"))
+        self.label_20.setText(_translate("MainWindow", "Resultados"))
+
 ###############################################################################
         #   Codigos de autoria humana
         #   Adicionando funcionalidade aos botoes
@@ -1347,9 +1492,12 @@ class Ui_MainWindow(object):
             self.f2T1Unit_comboBox.currentIndexChanged.connect(partial(self.atualizaDadosFluido, fluido=2))
 
             #Botoes de novo, abrir, salvar, calcular
-            self.saveFile_btn.clicked.connect(partial(self.salvarProjeto, spinBox=spinBoxSalvos, comboBox=comboBoxSalvos, funcao="salvarComo"))
+            self.abrirProjeto_btn.clicked.connect(partial(self.abrirProjeto))
+            self.saveFile_btn.clicked.connect(partial(self.salvarProjeto, spinBox=spinBoxSalvos, comboBox=comboBoxSalvos, funcao="salvar"))
+            self.saveAsFile_btn.clicked.connect(partial(self.salvarProjeto, spinBox=spinBoxSalvos, comboBox=comboBoxSalvos, funcao="salvarComo"))
             self.openFile_btn.clicked.connect(partial(self.abrirProjeto))
             self.newFile_btn.clicked.connect(partial(self.novoProjeto, spinBoxSalvos=spinBoxSalvos, comboBoxSalvos=comboBoxSalvos))
+    
     ###################################################################################
     ### FUNÇÕES QUE INTERMEDIAM TELA GRAFICA vs ROTINAS DE CALCULO E BANCO DE DADOS ###
     ###################################################################################
@@ -1357,21 +1505,40 @@ class Ui_MainWindow(object):
     def trocaTela(self, tela):
         '''Descr: Funcao que muda a tela ativa do programa
         '''
+        #Para efeitos visuais | Reseta todos os botoes sem negrito
+        #Posteriormente, somente o botao selecionado ira ficar negrito
+        nomeBtns = ['projeto_btn', 'fluido1_btn', 'fluido2_btn', 'trocador_btn', 'resultados_btn']
+        for nomeWidget in nomeBtns:
+            widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
+            widget.setStyleSheet('background-color:rgb(217, 217, 217); color: rgb(48, 143, 123);')
+            widget.setEnabled(True)
+            
+
         if tela=='projetoTela':
             self.window_frame.setCurrentIndex(0)
             self.title_label.setText("Projeto")
+            self.projeto_btn.setStyleSheet('background-color:rgb(217, 217, 217); color: rgb(0, 227, 178)')
+            self.projeto_btn.setEnabled(False)      
         elif tela=="fluido1Tela":
             self.window_frame.setCurrentIndex(1)
             self.title_label.setText("Fluido 1")
+            self.fluido1_btn.setStyleSheet('background-color:rgb(217, 217, 217); color: rgb(0, 227, 178)')
+            self.fluido1_btn.setEnabled(False)
         elif tela=="fluido2Tela":
             self.window_frame.setCurrentIndex(2)
             self.title_label.setText("Fluido 2")
+            self.fluido2_btn.setStyleSheet('background-color:rgb(217, 217, 217); color: rgb(0, 227, 178)')
+            self.fluido2_btn.setEnabled(False)
         elif tela=="trocadorTela":
             self.window_frame.setCurrentIndex(3)
             self.title_label.setText("Trocador")
+            self.trocador_btn.setStyleSheet('background-color:rgb(217, 217, 217); color: rgb(0, 227, 178)')
+            self.trocador_btn.setEnabled(False)
         elif tela=="resultadosTela":
             self.window_frame.setCurrentIndex(4)
             self.title_label.setText("Resultados")
+            self.resultados_btn.setStyleSheet('background-color:rgb(217, 217, 217); color: rgb(0, 227, 178)')
+            self.resultados_btn.setEnabled(False)
 
     def atualizaDadosFluido(self, fluido):
         '''Descr: Carrega a propriedade do fluido selecionado apresentando os valores na tela grafica
@@ -1449,7 +1616,10 @@ class Ui_MainWindow(object):
 
     def atualizaTituloPrograma(self, nomeArquivo):
             #Obter somente o nome do projeto e nao do diretorio
+
+            print(nomeArquivo)
             index = 0
+            finalIndex = len(nomeArquivo)  #Antianta
             for letra in nomeArquivo:
                 index = index + 1
                 if letra=='/':
@@ -1462,15 +1632,19 @@ class Ui_MainWindow(object):
 
         if funcao=="salvar":
             if self.nomeProjeto == "UmNomeQueNinguemNuncaVaiEscolher":
-                funcao == "salvarComo"
+                funcao = "salvarComo"
+                self.salvarProjeto(spinBox, comboBox, funcao)
+                return 0
             else:
                 nomeArquivo = self.nomeProjeto
 
         elif funcao=="salvarComo":
             nomeArquivo = QtWidgets.QFileDialog.getSaveFileName(self.centralwidget, 'Salvar Arquivo', filter='*.stc')
             nomeArquivo = str(nomeArquivo[0])
-            if nomeArquivo=="":
-                nomeArquivo = "defaultSTC.stc"
+
+            #Operacao cancelada (Anti anta)
+            if nomeArquivo=="": 
+                return 0
 
         saveText = ""
         #Salva dados dos comboBox'es
@@ -1500,16 +1674,20 @@ class Ui_MainWindow(object):
             if letra=='/':
                 finalIndex = index
         #Atualizar titulo do programa
-        nomeProjeto = nomeArquivo[finalIndex:len(self.nomeProjeto)-4]
-        MainWindow.setWindowTitle("STC - v0.0 - %s" %nomeProjeto)
-        print(self.nomeProjeto)
+        self.atualizaTituloPrograma(self.nomeProjeto)
 
     def abrirProjeto(self):
         #Carregar arquivo
         nomeArquivo = QtWidgets.QFileDialog.getOpenFileName(self.centralwidget, 'Abrir projeto', filter="*.stc")
         nomeArquivo = str(nomeArquivo[0])
+
+        #Operacao cancelada (anti anta)
+        if nomeArquivo=="":
+            return 0
+
         self.nomeProjeto = nomeArquivo
         self.atualizaTituloPrograma(self.nomeProjeto)
+        self.trocaTela('fluido1Tela')
 
         #Percorre linha por linha do arquivo
         with open(r"%s" %nomeArquivo) as file:
@@ -1548,6 +1726,7 @@ class Ui_MainWindow(object):
     def novoProjeto(self, comboBoxSalvos, spinBoxSalvos):
         self.atualizaTituloPrograma("/*")
         self.nomeProjeto = "UmNomeQueNinguemNuncaVaiEscolher"
+        self.trocaTela('fluido1Tela')
 
         for nomeWidget in comboBoxSalvos:
             widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
@@ -1556,96 +1735,6 @@ class Ui_MainWindow(object):
             widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
             widget.setValue(0.0)
 
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "STC - v0.0"))
-        self.fluido2_btn.setText(_translate("MainWindow", "Fluido 2"))
-        self.fluido2_btn.setShortcut(_translate("MainWindow", "3"))
-        self.fluido1_btn.setText(_translate("MainWindow", "Fluido 1"))
-        self.fluido1_btn.setShortcut(_translate("MainWindow", "2"))
-        self.resultados_btn.setText(_translate("MainWindow", "Resultados"))
-        self.resultados_btn.setShortcut(_translate("MainWindow", "5"))
-        self.trocador_btn.setText(_translate("MainWindow", "Trocador"))
-        self.trocador_btn.setShortcut(_translate("MainWindow", "4"))
-        self.projeto_btn.setText(_translate("MainWindow", "Projeto"))
-        self.projeto_btn.setShortcut(_translate("MainWindow", "1"))
-        self.title_label.setText(_translate("MainWindow", "Projeto"))
-        self.pushButton_2.setText(_translate("MainWindow", "STC"))
-        self.mainTitle_label.setText(_translate("MainWindow", "STC"))
-        self.label_17.setText(_translate("MainWindow", "Simulador de trocador de calor"))
-        self.radioButton.setText(_translate("MainWindow", "Trocador de placas"))
-        self.radioButton_3.setText(_translate("MainWindow", "Bitubular"))
-        self.radioButton_2.setText(_translate("MainWindow", "Casco e tubo"))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page), _translate("MainWindow", "Novo projeto"))
-        self.abrirProjeto_btn.setText(_translate("MainWindow", "Abrir projeto"))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), _translate("MainWindow", "Carregar projeto"))
-        self.label_34.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/logo.jpg\"/>Made with love by <a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\">STeamC</span></a><a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\"/></a><img src=\"images/unifei_logo.png\"/></p></body></html>"))
-        self.f1Fluids_combobox.setItemText(0, _translate("MainWindow", "Personalizado"))
-        self.f1Fluids_combobox.setItemText(1, _translate("MainWindow", "Água"))
-        self.f1Fluids_combobox.setItemText(2, _translate("MainWindow", "Amonia"))
-        self.f1Fluids_combobox.setItemText(3, _translate("MainWindow", "Benzeno"))
-        self.f1Fluids_combobox.setItemText(4, _translate("MainWindow", "Tolueno"))
-        self.f1Fluids_label.setText(_translate("MainWindow", "Selecionar fluido"))
-        self.f1T1Unit_comboBox.setItemText(0, _translate("MainWindow", "ºC"))
-        self.f1T1Unit_comboBox.setItemText(1, _translate("MainWindow", "K"))
-        self.f1T1Unit_comboBox.setItemText(2, _translate("MainWindow", "ºF"))
-        self.f1T1Unit_comboBox.setItemText(3, _translate("MainWindow", "R"))
-        self.f1Flow_label.setText(_translate("MainWindow", "Vazão do fluido"))
-        self.f1T1_label.setText(_translate("MainWindow", "Temperatura de entrada do fluido"))
-        self.f1R_label.setText(_translate("MainWindow", "Fator de incrustação (R)"))
-        self.f1Cp_label.setText(_translate("MainWindow", "Calor específico (Cp)"))
-        self.f1Mi_label.setText(_translate("MainWindow", "Viscosidade dinâmica (μ)"))
-        self.f1Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
-        self.f1RUnit_label.setText(_translate("MainWindow", "[(s.m².K)/J]"))
-        self.f1CpUnit_label.setText(_translate("MainWindow", "[kJ/(kg.K)]"))
-        self.f1MiUnit_label.setText(_translate("MainWindow", "[μPa.s]"))
-        self.f1Rho_label.setText(_translate("MainWindow", "<html><head/><body><p>Massa específica (ρ)</p></body></html>"))
-        self.f1RhoUnit_label.setText(_translate("MainWindow", "[kg/m³]"))
-        self.f1KUnit_label.setText(_translate("MainWindow", "[mW/(m.K)]"))
-        self.f1K_label.setText(_translate("MainWindow", "Condutividade térmica (k)"))
-        self.f1FlowUnit_comboBox.setItemText(0, _translate("MainWindow", "kg/h"))
-        self.f1FlowUnit_comboBox.setItemText(1, _translate("MainWindow", "g/s"))
-        self.f1FlowUnit_comboBox.setItemText(2, _translate("MainWindow", "L/s"))
-        self.f1FlowUnit_comboBox.setItemText(3, _translate("MainWindow", "m³/h"))
-        self.f1T2_label.setText(_translate("MainWindow", "Temperatura de saída do fluido"))
-        self.f1VerDados_btn.setText(_translate("MainWindow", "Ver dados"))
-        self.f1TUnit_label.setText(_translate("MainWindow", "ºC"))
-        self.f1Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
-        self.f1Tm_label.setText(_translate("MainWindow", "Fluido avaliado em 4000ºC"))
-        self.f2RUnit_label.setText(_translate("MainWindow", "[(s.m².K)/J]"))
-        self.f2T2_label.setText(_translate("MainWindow", "Temperatura de saída do fluido"))
-        self.f2KUnit_label.setText(_translate("MainWindow", "[mW/(m.K)]"))
-        self.f2T1_label.setText(_translate("MainWindow", "Temperatura de entrada do fluido"))
-        self.f2RhoUnit_label.setText(_translate("MainWindow", "[kg/m³]"))
-        self.f2Mi_label.setText(_translate("MainWindow", "Viscosidade dinâmica (μ)"))
-        self.f2MiUnit_label.setText(_translate("MainWindow", "[μPa.s]"))
-        self.f2R_label.setText(_translate("MainWindow", "Fator de incrustação (R)"))
-        self.f2K_label.setText(_translate("MainWindow", "Condutividade térmica (k)"))
-        self.f2Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
-        self.f2Flow_label.setText(_translate("MainWindow", "Vazão do fluido"))
-        self.f2T1Unit_comboBox.setItemText(0, _translate("MainWindow", "ºC"))
-        self.f2T1Unit_comboBox.setItemText(1, _translate("MainWindow", "K"))
-        self.f2T1Unit_comboBox.setItemText(2, _translate("MainWindow", "ºF"))
-        self.f2T1Unit_comboBox.setItemText(3, _translate("MainWindow", "R"))
-        self.f2FlowUnit_comboBox.setItemText(0, _translate("MainWindow", "kg/h"))
-        self.f2FlowUnit_comboBox.setItemText(1, _translate("MainWindow", "g/s"))
-        self.f2FlowUnit_comboBox.setItemText(2, _translate("MainWindow", "L/s"))
-        self.f2FlowUnit_comboBox.setItemText(3, _translate("MainWindow", "m³/h"))
-        self.f2Cp_label.setText(_translate("MainWindow", "Calor específico (Cp)"))
-        self.f2CpUnit_label.setText(_translate("MainWindow", "[kJ/(kg.K)]"))
-        self.f2Fluids_label.setText(_translate("MainWindow", "Selecionar fluido"))
-        self.f2Rho_label.setText(_translate("MainWindow", "<html><head/><body><p>Massa específica (ρ)</p></body></html>"))
-        self.f2Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
-        self.f2Tm_label.setText(_translate("MainWindow", "Fluido avaliado em 40ºC"))
-        self.f2Fluids_comboBox.setItemText(0, _translate("MainWindow", "Personalizado"))
-        self.f2Fluids_comboBox.setItemText(1, _translate("MainWindow", "Água"))
-        self.f2Fluids_comboBox.setItemText(2, _translate("MainWindow", "Amonia"))
-        self.f2Fluids_comboBox.setItemText(3, _translate("MainWindow", "Benzeno"))
-        self.f2Fluids_comboBox.setItemText(4, _translate("MainWindow", "Tolueno"))
-        self.f2VerDados_btn.setText(_translate("MainWindow", "Ver dados"))
-        self.f2TUnit_label.setText(_translate("MainWindow", "ºC"))
-        self.label_19.setText(_translate("MainWindow", "Trocador"))
-        self.label_20.setText(_translate("MainWindow", "Resultados"))
 
 #import images_rc
 

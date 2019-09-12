@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>S</class>
- <widget class="QMainWindow" name="S">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
@@ -159,7 +159,7 @@
               <enum>Qt::ClickFocus</enum>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(237, 237, 237);
+              <string notr="true">background-color:rgb(217, 217, 217);
 color: rgb(48, 143, 123);</string>
              </property>
              <property name="text">
@@ -214,7 +214,7 @@ color: rgb(48, 143, 123);</string>
               <bool>false</bool>
              </property>
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(237, 237, 237);
+              <string notr="true">background-color:rgb(217, 217, 217);
 color: rgb(48, 143, 123);</string>
              </property>
              <property name="text">
@@ -363,7 +363,12 @@ color: rgb(48, 143, 123);</string>
                <family>Segoe UI</family>
                <pointsize>10</pointsize>
                <weight>75</weight>
+               <italic>false</italic>
                <bold>true</bold>
+               <underline>false</underline>
+               <strikeout>false</strikeout>
+               <stylestrategy>PreferDefault</stylestrategy>
+               <kerning>true</kerning>
               </font>
              </property>
              <property name="cursor">
@@ -459,6 +464,12 @@ color: rgb(255, 255, 255);
          </property>
          <item>
           <widget class="QPushButton" name="newFile_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="maximumSize">
             <size>
              <width>40</width>
@@ -473,6 +484,9 @@ color: rgb(255, 255, 255);
            </property>
            <property name="toolTip">
             <string>Novo projeto</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
             <string/>
@@ -494,6 +508,12 @@ color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="openFile_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="maximumSize">
             <size>
              <width>40</width>
@@ -509,6 +529,9 @@ color: rgb(255, 255, 255);
            <property name="toolTip">
             <string>Abrir projeto</string>
            </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -518,7 +541,7 @@ color: rgb(255, 255, 255);
            </property>
            <property name="iconSize">
             <size>
-             <width>34</width>
+             <width>35</width>
              <height>23</height>
             </size>
            </property>
@@ -529,6 +552,12 @@ color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="saveFile_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="maximumSize">
             <size>
              <width>40</width>
@@ -543,6 +572,9 @@ color: rgb(255, 255, 255);
            </property>
            <property name="toolTip">
             <string>Salvar</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
             <string/>
@@ -567,14 +599,29 @@ color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="saveAsFile_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="maximumSize">
             <size>
              <width>40</width>
              <height>16777215</height>
             </size>
            </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="toolTip">
-            <string>Salvar como</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Salvar como&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="toolTipDuration">
+            <number>-2</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
             <string/>
@@ -596,6 +643,12 @@ color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="calculate_btn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="maximumSize">
             <size>
              <width>40</width>
@@ -610,6 +663,9 @@ color: rgb(255, 255, 255);
            </property>
            <property name="toolTip">
             <string>Calcular</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(0, 0, 0);</string>
            </property>
            <property name="text">
             <string/>
@@ -631,6 +687,12 @@ color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QLabel" name="title_label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="font">
             <font>
              <family>Segoe UI</family>
@@ -1126,6 +1188,9 @@ color: rgb(48, 143, 123);</string>
               <family>Segoe UI</family>
               <pointsize>10</pointsize>
              </font>
+            </property>
+            <property name="toolTip">
+             <string/>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
@@ -1861,6 +1926,9 @@ color: rgb(0, 100, 148);</string>
             </property>
             <property name="focusPolicy">
              <enum>Qt::ClickFocus</enum>
+            </property>
+            <property name="toolTip">
+             <string/>
             </property>
             <property name="text">
              <string>Ver dados</string>

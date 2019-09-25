@@ -775,7 +775,7 @@ color: rgb(48, 143, 123);</string>
          <number>5</number>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="projeto_page">
          <property name="sizePolicy">
@@ -947,7 +947,7 @@ color: rgb(48, 143, 123);</string>
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>132</width>
+                  <width>164</width>
                   <height>81</height>
                  </rect>
                 </property>

@@ -199,7 +199,7 @@ def tabela_condutividade(nome_material):
     index = material_list.index(nome_material)      # Indentifica uma string específica na lista
     return k[index]     # retorna o valor corresponde de k ao index da string
 
-def area_troca_termica(Q, Ud, dTln, Aef):
+def area_troca_termica(Q, Ud, dTln, L, w):
     '''
 	Descr: Calcula a area de troca térmica e o numero de placas
 
@@ -213,22 +213,22 @@ def area_troca_termica(Q, Ud, dTln, Aef):
 			-[A, Np]: list com a ara de troca termica necessaria e o numero de placas
 	Author: Vinicius
 	'''
+    Aef = L*w
     #Calculo do A
     A = Q/(Ud*dTln)
     Np = A/Aef
 
     return [A,Np]
 
-def calculaQ(m1, cp1, dT1, m2, cp2, dT2):
+def calculaQ(m, cp1, dT1, cp2, dT2):
     '''
 	Descr: Calcula a taxa de troca de calor Q p/ fluido quente e frio( ou fluido 1 e 2)
     Ainda verifica se ambos os fluidos estao esquentando ou esfrianddo, evitando bugs
 
 	Inputs: 
-			- m1: Vazao massica do fluido 1
+			- m: Vetor de vazao massica dos fluidos [vazao fluido 1, vazao fluido 2]
 			- cp1: Calor especifico do fluido 1
 			- dT1: Variação de temperatura do fluido 1
-            - m2: Vazao massica do fluido 2
             - cp2: Calor especifico do fluido 2
             - dT2: Variação de temperatura do fluido 2
 	Outputs: 
@@ -240,8 +240,8 @@ def calculaQ(m1, cp1, dT1, m2, cp2, dT2):
 	Author: Vinicius
 	'''
 
-    Q1 = m1*cp1*dT1
-    Q2 = m2*cp2*dT2
+    Q1 = m[0]*cp1*dT1
+    Q2 = m[1]*cp2*dT2
 
     if dT1>=0 and dT2>=0:
         print("Erro, ambos os fluidos estão esquentando")
@@ -304,3 +304,39 @@ def ConverterVazão(mod, uni,rho):
 	elif uni =='m3/h':
 	    vaz = (mod*rho)/3600
 	return vaz
+
+def coef_global(Rcond,h,Rd):
+    U = 1/(Rcond + 1/h[0] + 1/h[1] +Rd)
+    return U
+
+def iteracaoTrocadorPlacas (Npchute,itmax,tolerancia, parametros):
+
+	'''	Descr:
+		Input:
+				-parametros: vetor contendo os parametros de calculo
+				parametros = [w, e, Pr, m, Deq, mi, ap, kf, Rcond, h, Rd, Q, Ud, dTln, L]
+		Output:
+	'''
+
+	[w, e, Pr, m, Deq, mi, ap, kf, Rcond, h, Rd, Q, Ud, dTln, L] = parametros
+	 
+	Np = Npchute #para primeira iteração apenas
+	while(itmax>0):
+		ap=Area_ap(w,e,Np)
+		h=coef_convec(Pr,m,Deq,mi,ap,kf)
+		Ud=coef_global(Rcond,h,Rd)
+		NPnew=area_troca_termica(abs(Q), Ud, dTln, L, w)[1]
+		itmax=itmax-1
+		
+		erro = abs((NPnew - Np)/NPnew)
+		
+		if erro<tolerancia:
+			print('tolerancia atingida')
+			break
+
+		Np = NPnew
+		print('NPnew(',abs(200-itmax),') =',NPnew)
+
+	#Arredondando pro valor seguinte superior (em caso de numero quebrado)
+	NPnew = math.ceil(NPnew)
+	return NPnew

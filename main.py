@@ -1617,7 +1617,7 @@ class Ui_MainWindow(object):
     def atualizaTituloPrograma(self, nomeArquivo):
             #Obter somente o nome do projeto e nao do diretorio
 
-            print(nomeArquivo)
+            #print(nomeArquivo)
             index = 0
             finalIndex = len(nomeArquivo)  #Antianta
             for letra in nomeArquivo:
@@ -1667,13 +1667,14 @@ class Ui_MainWindow(object):
 
         self.nomeProjeto = nomeArquivo
         
+        '''
         #Obter somente o nome do projeto e nao do diretorio
         index = 0
         for letra in nomeArquivo:
             index = index + 1
             if letra=='/':
                 finalIndex = index
-        #Atualizar titulo do programa
+        #Atualizar titulo do programa'''
         self.atualizaTituloPrograma(self.nomeProjeto)
 
     def abrirProjeto(self):

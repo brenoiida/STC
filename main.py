@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
 
-
-#AVISO: Os codigos de autoria humana estão a partir da linha 1438
-
-
-
-
 # Form implementation generated from reading ui file 'Tela.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.3
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from libSTC import tabela_fluidos, Nome_fluidos, ConverterTemperatura
+from libSTC import *
 from functools import partial
+
+rho1=cp1=kf1=mi1=pr1=42
+rho2=cp2=kf2=mi2=pr2=43
+t1=t2=10
+T1=T2=20
+Rcond=Rd=0
+tolerancia=0.000001
+itmax=200
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -65,26 +68,6 @@ class Ui_MainWindow(object):
         self.gridLayout.setContentsMargins(-1, 0, -1, -1)
         self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
-        self.fluido2_btn = QtWidgets.QPushButton(self.buttons_frame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(1)
-        sizePolicy.setHeightForWidth(self.fluido2_btn.sizePolicy().hasHeightForWidth())
-        self.fluido2_btn.setSizePolicy(sizePolicy)
-        self.fluido2_btn.setMinimumSize(QtCore.QSize(0, 100))
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.fluido2_btn.setFont(font)
-        self.fluido2_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.fluido2_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
-        self.fluido2_btn.setStyleSheet("background-color: rgb(237, 237, 237);\n"
-"color: rgb(48, 143, 123);")
-        self.fluido2_btn.setFlat(True)
-        self.fluido2_btn.setObjectName("fluido2_btn")
-        self.gridLayout.addWidget(self.fluido2_btn, 2, 0, 1, 1)
         self.fluido1_btn = QtWidgets.QPushButton(self.buttons_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -103,7 +86,7 @@ class Ui_MainWindow(object):
         self.fluido1_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.fluido1_btn.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.fluido1_btn.setAutoFillBackground(False)
-        self.fluido1_btn.setStyleSheet("background-color: rgb(237, 237, 237);\n"
+        self.fluido1_btn.setStyleSheet("background-color:rgb(217, 217, 217);\n"
 "color: rgb(48, 143, 123);")
         self.fluido1_btn.setCheckable(False)
         self.fluido1_btn.setChecked(False)
@@ -112,6 +95,26 @@ class Ui_MainWindow(object):
         self.fluido1_btn.setFlat(True)
         self.fluido1_btn.setObjectName("fluido1_btn")
         self.gridLayout.addWidget(self.fluido1_btn, 1, 0, 1, 1)
+        self.fluido2_btn = QtWidgets.QPushButton(self.buttons_frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.fluido2_btn.sizePolicy().hasHeightForWidth())
+        self.fluido2_btn.setSizePolicy(sizePolicy)
+        self.fluido2_btn.setMinimumSize(QtCore.QSize(0, 100))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.fluido2_btn.setFont(font)
+        self.fluido2_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.fluido2_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.fluido2_btn.setStyleSheet("background-color:rgb(217, 217, 217);\n"
+"color: rgb(48, 143, 123);")
+        self.fluido2_btn.setFlat(True)
+        self.fluido2_btn.setObjectName("fluido2_btn")
+        self.gridLayout.addWidget(self.fluido2_btn, 2, 0, 1, 1)
         self.resultados_btn = QtWidgets.QPushButton(self.buttons_frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -166,7 +169,12 @@ class Ui_MainWindow(object):
         font.setFamily("Segoe UI")
         font.setPointSize(10)
         font.setBold(True)
+        font.setItalic(False)
+        font.setUnderline(False)
         font.setWeight(75)
+        font.setStrikeOut(False)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.projeto_btn.setFont(font)
         self.projeto_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.projeto_btn.setFocusPolicy(QtCore.Qt.ClickFocus)
@@ -183,6 +191,25 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.projeto_btn, 0, 0, 1, 1)
         self.verticalLayout_2.addLayout(self.gridLayout)
         self.gridLayout_4.addWidget(self.buttons_frame, 1, 0, 1, 1)
+        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line.setStyleSheet("color: rgb(48, 143, 123);")
+        self.line.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.line.setLineWidth(2)
+        self.line.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line.setObjectName("line")
+        self.gridLayout_4.addWidget(self.line, 0, 1, 2, 1)
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setStyleSheet("background-color: rgb(243, 243, 243);\n"
+"color: rgb(48, 143, 123);")
+        self.pushButton_2.setFlat(True)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.gridLayout_4.addWidget(self.pushButton_2, 0, 0, 1, 1)
         self.toolbar = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -306,25 +333,6 @@ class Ui_MainWindow(object):
         self.title_label.setObjectName("title_label")
         self.horizontalLayout.addWidget(self.title_label)
         self.gridLayout_4.addWidget(self.toolbar, 0, 2, 1, 1)
-        self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setStyleSheet("color: rgb(48, 143, 123);")
-        self.line.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.line.setLineWidth(2)
-        self.line.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line.setObjectName("line")
-        self.gridLayout_4.addWidget(self.line, 0, 1, 2, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("background-color: rgb(243, 243, 243);\n"
-"color: rgb(48, 143, 123);")
-        self.pushButton_2.setFlat(True)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout_4.addWidget(self.pushButton_2, 0, 0, 1, 1)
         self.window_frame = QtWidgets.QStackedWidget(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(1)
@@ -417,7 +425,7 @@ class Ui_MainWindow(object):
         self.toolBox.setFrameShape(QtWidgets.QFrame.Box)
         self.toolBox.setObjectName("toolBox")
         self.page = QtWidgets.QWidget()
-        self.page.setGeometry(QtCore.QRect(0, 0, 132, 81))
+        self.page.setGeometry(QtCore.QRect(0, 0, 164, 81))
         self.page.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.page.setObjectName("page")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.page)
@@ -1297,22 +1305,296 @@ class Ui_MainWindow(object):
         self.window_frame.addWidget(self.fluido2_page)
         self.trocador_page = QtWidgets.QWidget()
         self.trocador_page.setObjectName("trocador_page")
-        self.label_19 = QtWidgets.QLabel(self.trocador_page)
-        self.label_19.setGeometry(QtCore.QRect(290, 180, 47, 13))
-        self.label_19.setObjectName("label_19")
+        self.e_entry = QtWidgets.QDoubleSpinBox(self.trocador_page)
+        self.e_entry.setGeometry(QtCore.QRect(235, 351, 269, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.e_entry.sizePolicy().hasHeightForWidth())
+        self.e_entry.setSizePolicy(sizePolicy)
+        self.e_entry.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.e_entry.setFont(font)
+        self.e_entry.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.e_entry.setFrame(False)
+        self.e_entry.setAlignment(QtCore.Qt.AlignCenter)
+        self.e_entry.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.e_entry.setMinimum(-99999.0)
+        self.e_entry.setMaximum(99999.0)
+        self.e_entry.setObjectName("e_entry")
+        self.L_label = QtWidgets.QLabel(self.trocador_page)
+        self.L_label.setGeometry(QtCore.QRect(70, 420, 159, 24))
+        self.L_label.setObjectName("L_label")
+        self.W_label = QtWidgets.QLabel(self.trocador_page)
+        self.W_label.setGeometry(QtCore.QRect(70, 282, 159, 24))
+        self.W_label.setObjectName("W_label")
+        self.W_Unit_comboBox = QtWidgets.QComboBox(self.trocador_page)
+        self.W_Unit_comboBox.setGeometry(QtCore.QRect(510, 282, 70, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.W_Unit_comboBox.sizePolicy().hasHeightForWidth())
+        self.W_Unit_comboBox.setSizePolicy(sizePolicy)
+        self.W_Unit_comboBox.setMinimumSize(QtCore.QSize(0, 24))
+        self.W_Unit_comboBox.setMaximumSize(QtCore.QSize(70, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.W_Unit_comboBox.setFont(font)
+        self.W_Unit_comboBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.W_Unit_comboBox.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.W_Unit_comboBox.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.W_Unit_comboBox.setFrame(False)
+        self.W_Unit_comboBox.setModelColumn(0)
+        self.W_Unit_comboBox.setObjectName("W_Unit_comboBox")
+        self.W_Unit_comboBox.addItem("")
+        self.W_Unit_comboBox.addItem("")
+        self.W_Unit_comboBox.addItem("")
+        self.L_entry = QtWidgets.QDoubleSpinBox(self.trocador_page)
+        self.L_entry.setGeometry(QtCore.QRect(235, 420, 269, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.L_entry.sizePolicy().hasHeightForWidth())
+        self.L_entry.setSizePolicy(sizePolicy)
+        self.L_entry.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.L_entry.setFont(font)
+        self.L_entry.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.L_entry.setFrame(False)
+        self.L_entry.setAlignment(QtCore.Qt.AlignCenter)
+        self.L_entry.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.L_entry.setMinimum(-99999.0)
+        self.L_entry.setMaximum(99999.0)
+        self.L_entry.setObjectName("L_entry")
+        self.W_entry = QtWidgets.QDoubleSpinBox(self.trocador_page)
+        self.W_entry.setGeometry(QtCore.QRect(235, 282, 269, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.W_entry.sizePolicy().hasHeightForWidth())
+        self.W_entry.setSizePolicy(sizePolicy)
+        self.W_entry.setMinimumSize(QtCore.QSize(269, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.W_entry.setFont(font)
+        self.W_entry.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.W_entry.setFrame(False)
+        self.W_entry.setAlignment(QtCore.Qt.AlignCenter)
+        self.W_entry.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.W_entry.setMinimum(-99999.0)
+        self.W_entry.setMaximum(99999.0)
+        self.W_entry.setObjectName("W_entry")
+        self.L_Unit_comboBox_ = QtWidgets.QComboBox(self.trocador_page)
+        self.L_Unit_comboBox_.setGeometry(QtCore.QRect(510, 420, 70, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.L_Unit_comboBox_.sizePolicy().hasHeightForWidth())
+        self.L_Unit_comboBox_.setSizePolicy(sizePolicy)
+        self.L_Unit_comboBox_.setMinimumSize(QtCore.QSize(0, 24))
+        self.L_Unit_comboBox_.setMaximumSize(QtCore.QSize(70, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.L_Unit_comboBox_.setFont(font)
+        self.L_Unit_comboBox_.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.L_Unit_comboBox_.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.L_Unit_comboBox_.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.L_Unit_comboBox_.setFrame(False)
+        self.L_Unit_comboBox_.setModelColumn(0)
+        self.L_Unit_comboBox_.setObjectName("L_Unit_comboBox_")
+        self.L_Unit_comboBox_.addItem("")
+        self.L_Unit_comboBox_.addItem("")
+        self.L_Unit_comboBox_.addItem("")
+        self.Np_label = QtWidgets.QLabel(self.trocador_page)
+        self.Np_label.setGeometry(QtCore.QRect(70, 489, 159, 24))
+        self.Np_label.setObjectName("Np_label")
+        self.e_label = QtWidgets.QLabel(self.trocador_page)
+        self.e_label.setGeometry(QtCore.QRect(70, 351, 159, 24))
+        self.e_label.setObjectName("e_label")
+        self.e_Unit_comboBox = QtWidgets.QComboBox(self.trocador_page)
+        self.e_Unit_comboBox.setGeometry(QtCore.QRect(510, 351, 70, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.e_Unit_comboBox.sizePolicy().hasHeightForWidth())
+        self.e_Unit_comboBox.setSizePolicy(sizePolicy)
+        self.e_Unit_comboBox.setMinimumSize(QtCore.QSize(0, 24))
+        self.e_Unit_comboBox.setMaximumSize(QtCore.QSize(70, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.e_Unit_comboBox.setFont(font)
+        self.e_Unit_comboBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.e_Unit_comboBox.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.e_Unit_comboBox.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.e_Unit_comboBox.setFrame(False)
+        self.e_Unit_comboBox.setModelColumn(0)
+        self.e_Unit_comboBox.setObjectName("e_Unit_comboBox")
+        self.e_Unit_comboBox.addItem("")
+        self.e_Unit_comboBox.addItem("")
+        self.e_Unit_comboBox.addItem("")
+        self.Np_entry = QtWidgets.QDoubleSpinBox(self.trocador_page)
+        self.Np_entry.setGeometry(QtCore.QRect(235, 489, 269, 24))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(1)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.Np_entry.sizePolicy().hasHeightForWidth())
+        self.Np_entry.setSizePolicy(sizePolicy)
+        self.Np_entry.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.Np_entry.setFont(font)
+        self.Np_entry.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.Np_entry.setFrame(False)
+        self.Np_entry.setAlignment(QtCore.Qt.AlignCenter)
+        self.Np_entry.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.Np_entry.setMinimum(-99999.0)
+        self.Np_entry.setMaximum(99999.0)
+        self.Np_entry.setObjectName("Np_entry")
+        self.dimens_label = QtWidgets.QLabel(self.trocador_page)
+        self.dimens_label.setGeometry(QtCore.QRect(510, 30, 197, 207))
+        self.dimens_label.setObjectName("dimens_label")
         self.window_frame.addWidget(self.trocador_page)
         self.resultados_page = QtWidgets.QWidget()
         self.resultados_page.setObjectName("resultados_page")
-        self.label_20 = QtWidgets.QLabel(self.resultados_page)
-        self.label_20.setGeometry(QtCore.QRect(280, 240, 47, 13))
-        self.label_20.setObjectName("label_20")
+        self.deq_label = QtWidgets.QLabel(self.resultados_page)
+        self.deq_label.setGeometry(QtCore.QRect(150, 90, 159, 24))
+        self.deq_label.setObjectName("deq_label")
+        self.h_label = QtWidgets.QLabel(self.resultados_page)
+        self.h_label.setGeometry(QtCore.QRect(150, 228, 159, 24))
+        self.h_label.setObjectName("h_label")
+        self.ap_label = QtWidgets.QLabel(self.resultados_page)
+        self.ap_label.setGeometry(QtCore.QRect(150, 159, 159, 24))
+        self.ap_label.setObjectName("ap_label")
+        self.A_label = QtWidgets.QLabel(self.resultados_page)
+        self.A_label.setGeometry(QtCore.QRect(155, 290, 159, 24))
+        self.A_label.setObjectName("A_label")
+        self.Np_new_label = QtWidgets.QLabel(self.resultados_page)
+        self.Np_new_label.setGeometry(QtCore.QRect(155, 350, 159, 24))
+        self.Np_new_label.setObjectName("Np_new_label")
+        self.Q_label = QtWidgets.QLabel(self.resultados_page)
+        self.Q_label.setGeometry(QtCore.QRect(155, 410, 159, 24))
+        self.Q_label.setObjectName("Q_label")
+        self.dtln_label = QtWidgets.QLabel(self.resultados_page)
+        self.dtln_label.setGeometry(QtCore.QRect(78, 470, 231, 24))
+        self.dtln_label.setObjectName("dtln_label")
+        self.deq_spinBox = QtWidgets.QDoubleSpinBox(self.resultados_page)
+        self.deq_spinBox.setGeometry(QtCore.QRect(320, 90, 201, 24))
+        self.deq_spinBox.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.deq_spinBox.setFont(font)
+        self.deq_spinBox.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.deq_spinBox.setAlignment(QtCore.Qt.AlignCenter)
+        self.deq_spinBox.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.deq_spinBox.setMinimum(0.0)
+        self.deq_spinBox.setMaximum(999999.0)
+        self.deq_spinBox.setObjectName("deq_spinBox")
+        self.ap_spinbox = QtWidgets.QDoubleSpinBox(self.resultados_page)
+        self.ap_spinbox.setGeometry(QtCore.QRect(320, 160, 201, 24))
+        self.ap_spinbox.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.ap_spinbox.setFont(font)
+        self.ap_spinbox.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.ap_spinbox.setAlignment(QtCore.Qt.AlignCenter)
+        self.ap_spinbox.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.ap_spinbox.setMinimum(0.0)
+        self.ap_spinbox.setMaximum(999999.0)
+        self.ap_spinbox.setObjectName("ap_spinbox")
+        self.A_spinbox = QtWidgets.QDoubleSpinBox(self.resultados_page)
+        self.A_spinbox.setGeometry(QtCore.QRect(320, 290, 201, 24))
+        self.A_spinbox.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.A_spinbox.setFont(font)
+        self.A_spinbox.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.A_spinbox.setAlignment(QtCore.Qt.AlignCenter)
+        self.A_spinbox.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.A_spinbox.setMinimum(0.0)
+        self.A_spinbox.setMaximum(999999.0)
+        self.A_spinbox.setObjectName("A_spinbox")
+        self.h_spinbox = QtWidgets.QDoubleSpinBox(self.resultados_page)
+        self.h_spinbox.setGeometry(QtCore.QRect(320, 230, 201, 24))
+        self.h_spinbox.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.h_spinbox.setFont(font)
+        self.h_spinbox.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.h_spinbox.setAlignment(QtCore.Qt.AlignCenter)
+        self.h_spinbox.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.h_spinbox.setMinimum(0.0)
+        self.h_spinbox.setMaximum(999999.0)
+        self.h_spinbox.setObjectName("h_spinbox")
+        self.Np_spinbox = QtWidgets.QDoubleSpinBox(self.resultados_page)
+        self.Np_spinbox.setGeometry(QtCore.QRect(320, 350, 201, 24))
+        self.Np_spinbox.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.Np_spinbox.setFont(font)
+        self.Np_spinbox.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.Np_spinbox.setAlignment(QtCore.Qt.AlignCenter)
+        self.Np_spinbox.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.Np_spinbox.setMinimum(0.0)
+        self.Np_spinbox.setMaximum(999999.0)
+        self.Np_spinbox.setObjectName("Np_spinbox")
+        self.Q_spinbox = QtWidgets.QDoubleSpinBox(self.resultados_page)
+        self.Q_spinbox.setGeometry(QtCore.QRect(320, 410, 201, 24))
+        self.Q_spinbox.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.Q_spinbox.setFont(font)
+        self.Q_spinbox.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.Q_spinbox.setAlignment(QtCore.Qt.AlignCenter)
+        self.Q_spinbox.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.Q_spinbox.setMinimum(0.0)
+        self.Q_spinbox.setMaximum(999999.0)
+        self.Q_spinbox.setObjectName("Q_spinbox")
+        self.dtln_spinbox = QtWidgets.QDoubleSpinBox(self.resultados_page)
+        self.dtln_spinbox.setGeometry(QtCore.QRect(320, 470, 201, 24))
+        self.dtln_spinbox.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(10)
+        self.dtln_spinbox.setFont(font)
+        self.dtln_spinbox.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 100, 148);")
+        self.dtln_spinbox.setAlignment(QtCore.Qt.AlignCenter)
+        self.dtln_spinbox.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
+        self.dtln_spinbox.setMinimum(0.0)
+        self.dtln_spinbox.setMaximum(999999.0)
+        self.dtln_spinbox.setObjectName("dtln_spinbox")
         self.window_frame.addWidget(self.resultados_page)
         self.gridLayout_4.addWidget(self.window_frame, 1, 2, 1, 1)
         self.gridLayout_3.addLayout(self.gridLayout_4, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.window_frame.setCurrentIndex(1)
+        self.window_frame.setCurrentIndex(4)
         self.toolBox.setCurrentIndex(1)
         self.toolBox.layout().setSpacing(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -1342,23 +1624,23 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "STC - v0.0"))
-        self.fluido2_btn.setText(_translate("MainWindow", "Fluido 2"))
-        self.fluido2_btn.setShortcut(_translate("MainWindow", "3"))
         self.fluido1_btn.setText(_translate("MainWindow", "Fluido 1"))
         self.fluido1_btn.setShortcut(_translate("MainWindow", "2"))
+        self.fluido2_btn.setText(_translate("MainWindow", "Fluido 2"))
+        self.fluido2_btn.setShortcut(_translate("MainWindow", "3"))
         self.resultados_btn.setText(_translate("MainWindow", "Resultados"))
         self.resultados_btn.setShortcut(_translate("MainWindow", "5"))
         self.trocador_btn.setText(_translate("MainWindow", "Trocador"))
         self.trocador_btn.setShortcut(_translate("MainWindow", "4"))
         self.projeto_btn.setText(_translate("MainWindow", "Projeto"))
         self.projeto_btn.setShortcut(_translate("MainWindow", "1"))
+        self.pushButton_2.setText(_translate("MainWindow", "STC"))
         self.newFile_btn.setToolTip(_translate("MainWindow", "Novo projeto"))
         self.openFile_btn.setToolTip(_translate("MainWindow", "Abrir projeto"))
         self.saveFile_btn.setToolTip(_translate("MainWindow", "Salvar"))
         self.saveAsFile_btn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Salvar como</p></body></html>"))
         self.calculate_btn.setToolTip(_translate("MainWindow", "Calcular"))
         self.title_label.setText(_translate("MainWindow", "Projeto"))
-        self.pushButton_2.setText(_translate("MainWindow", "STC"))
         self.mainTitle_label.setText(_translate("MainWindow", "STC"))
         self.label_17.setText(_translate("MainWindow", "Simulador de trocador de calor"))
         self.radioButton.setText(_translate("MainWindow", "Trocador de placas"))
@@ -1367,7 +1649,7 @@ class Ui_MainWindow(object):
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), _translate("MainWindow", "Novo projeto"))
         self.abrirProjeto_btn.setText(_translate("MainWindow", "Abrir projeto"))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), _translate("MainWindow", "Carregar projeto"))
-        self.label_34.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/logo.jpg\"/>Made with love by <a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\">STeamC</span></a><a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\"/></a><img src=\"images/unifei_logo.png\"/></p></body></html>"))
+        self.label_34.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/mainTitle/logo.jpg\"/>Made with love by <a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\">STeamC</span></a><a href=\"https://github.com/Zamariolo/STC\"><span style=\" color:#308f7b;\"/></a><img src=\":/mainTitle/unifei_logo.png\"/></p></body></html>"))
         self.f1Fluids_combobox.setItemText(0, _translate("MainWindow", "Personalizado"))
         self.f1Fluids_combobox.setItemText(1, _translate("MainWindow", "Água"))
         self.f1Fluids_combobox.setItemText(2, _translate("MainWindow", "Amonia"))
@@ -1383,7 +1665,6 @@ class Ui_MainWindow(object):
         self.f1R_label.setText(_translate("MainWindow", "Fator de incrustação (R)"))
         self.f1Cp_label.setText(_translate("MainWindow", "Calor específico (Cp)"))
         self.f1Mi_label.setText(_translate("MainWindow", "Viscosidade dinâmica (μ)"))
-        self.f1Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
         self.f1RUnit_label.setText(_translate("MainWindow", "[(s.m².K)/J]"))
         self.f1CpUnit_label.setText(_translate("MainWindow", "[kJ/(kg.K)]"))
         self.f1MiUnit_label.setText(_translate("MainWindow", "[μPa.s]"))
@@ -1398,7 +1679,6 @@ class Ui_MainWindow(object):
         self.f1T2_label.setText(_translate("MainWindow", "Temperatura de saída do fluido"))
         self.f1VerDados_btn.setText(_translate("MainWindow", "Ver dados"))
         self.f1TUnit_label.setText(_translate("MainWindow", "ºC"))
-        self.f1Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
         self.f1Tm_label.setText(_translate("MainWindow", "Fluido avaliado em 4000ºC"))
         self.f2RUnit_label.setText(_translate("MainWindow", "[(s.m².K)/J]"))
         self.f2T2_label.setText(_translate("MainWindow", "Temperatura de saída do fluido"))
@@ -1409,7 +1689,6 @@ class Ui_MainWindow(object):
         self.f2MiUnit_label.setText(_translate("MainWindow", "[μPa.s]"))
         self.f2R_label.setText(_translate("MainWindow", "Fator de incrustação (R)"))
         self.f2K_label.setText(_translate("MainWindow", "Condutividade térmica (k)"))
-        self.f2Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
         self.f2Flow_label.setText(_translate("MainWindow", "Vazão do fluido"))
         self.f2T1Unit_comboBox.setItemText(0, _translate("MainWindow", "ºC"))
         self.f2T1Unit_comboBox.setItemText(1, _translate("MainWindow", "K"))
@@ -1423,7 +1702,6 @@ class Ui_MainWindow(object):
         self.f2CpUnit_label.setText(_translate("MainWindow", "[kJ/(kg.K)]"))
         self.f2Fluids_label.setText(_translate("MainWindow", "Selecionar fluido"))
         self.f2Rho_label.setText(_translate("MainWindow", "<html><head/><body><p>Massa específica (ρ)</p></body></html>"))
-        self.f2Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
         self.f2Tm_label.setText(_translate("MainWindow", "Fluido avaliado em 4000ºC"))
         self.f2Fluids_comboBox.setItemText(0, _translate("MainWindow", "Personalizado"))
         self.f2Fluids_comboBox.setItemText(1, _translate("MainWindow", "Água"))
@@ -1432,8 +1710,33 @@ class Ui_MainWindow(object):
         self.f2Fluids_comboBox.setItemText(4, _translate("MainWindow", "Tolueno"))
         self.f2VerDados_btn.setText(_translate("MainWindow", "Ver dados"))
         self.f2TUnit_label.setText(_translate("MainWindow", "ºC"))
-        self.label_19.setText(_translate("MainWindow", "Trocador"))
-        self.label_20.setText(_translate("MainWindow", "Resultados"))
+        self.L_label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Comprimento (L) </span></p></body></html>"))
+        self.W_label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Largura (W) </span></p></body></html>"))
+        self.W_Unit_comboBox.setItemText(0, _translate("MainWindow", "m"))
+        self.W_Unit_comboBox.setItemText(1, _translate("MainWindow", "mm"))
+        self.W_Unit_comboBox.setItemText(2, _translate("MainWindow", "cm"))
+        self.L_Unit_comboBox_.setItemText(0, _translate("MainWindow", "m"))
+        self.L_Unit_comboBox_.setItemText(1, _translate("MainWindow", "mm"))
+        self.L_Unit_comboBox_.setItemText(2, _translate("MainWindow", "cm"))
+        self.Np_label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Np estimativa</span></p></body></html>"))
+        self.e_label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Espessura do canal (e)</span></p></body></html>"))
+        self.e_Unit_comboBox.setItemText(0, _translate("MainWindow", "m"))
+        self.e_Unit_comboBox.setItemText(1, _translate("MainWindow", "mm"))
+        self.e_Unit_comboBox.setItemText(2, _translate("MainWindow", "cm"))
+        self.deq_label.setText(_translate("MainWindow", "<html><head/><body><p>Diametro Equivalente (Deq)</p></body></html>"))
+        self.h_label.setText(_translate("MainWindow", "<html><head/><body><p>Coeficiente convectivo (h)</p></body></html>"))
+        self.ap_label.setText(_translate("MainWindow", "<html><head/><body><p>Área de escoamento (ap)</p></body></html>"))
+        self.A_label.setText(_translate("MainWindow", "<html><head/><body><p>Área de troca térmica (A)</p></body></html>"))
+        self.Np_new_label.setText(_translate("MainWindow", "<html><head/><body><p>Número de placas (Np)</p></body></html>"))
+        self.Q_label.setText(_translate("MainWindow", "<html><head/><body><p>Taxa de calor (Q)</p></body></html>"))
+        self.dtln_label.setText(_translate("MainWindow", "<html><head/><body><p>Diferença de temperatura média logarítmica</p></body></html>"))
+        #-------------imagens----------------------------------------------------------
+        self.f1Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
+        self.f1Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
+        self.f2Warning_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/warning.png\"/></p></body></html>"))
+        self.f2Image_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Plate_heat_exchanger.jpg\"/></p></body></html>"))
+        self.dimens_label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\"images/Medidas_Trocadores_Calor.png\"/></p></body></html>"))
+       
 
 ###############################################################################
         #   Codigos de autoria humana
@@ -1497,6 +1800,9 @@ class Ui_MainWindow(object):
             self.saveAsFile_btn.clicked.connect(partial(self.salvarProjeto, spinBox=spinBoxSalvos, comboBox=comboBoxSalvos, funcao="salvarComo"))
             self.openFile_btn.clicked.connect(partial(self.abrirProjeto))
             self.newFile_btn.clicked.connect(partial(self.novoProjeto, spinBoxSalvos=spinBoxSalvos, comboBoxSalvos=comboBoxSalvos))
+
+            #botao ver resultados
+            self.calculate_btn.clicked.connect(partial(self.mostrar_resultados,resultado=str('calculo')))
     
     ###################################################################################
     ### FUNÇÕES QUE INTERMEDIAM TELA GRAFICA vs ROTINAS DE CALCULO E BANCO DE DADOS ###
@@ -1546,22 +1852,25 @@ class Ui_MainWindow(object):
         #Carrega propriedades do fluido 1
         if fluido == 1:
             fluid = self.f1Fluids_combobox.currentText()
+            global t1,t2
 
-            T1 = float(self.f1T1_entry.value())
-            T2 = float(self.f1T2_entry.value())
+            t1 = float(self.f1T1_entry.value())
+            t2 = float(self.f1T2_entry.value())
             Tunidade = self.f1T1Unit_comboBox.currentText()     #Adquire temperaturas e unidade
             self.f1TUnit_label.setText(Tunidade)                #Atualiza unidades
-            tm = (T1+T2)/2.0
+            tm = (t1+t2)/2.0
 
             if fluid != "Personalizado":
-                T1 = ConverterTemperatura(Tunidade, T1)
-                T2 = ConverterTemperatura(Tunidade, T2) #Converte temperaturas
-                [rho,cp,kf,mi,pr, aviso] = tabela_fluidos(fluid, T1, T2)
-                self.f1Cp_spinBox.setValue(cp)
-                self.f1Rho_spinBox.setValue(rho)
-                self.f1Mi_spinbox.setValue(mi)
-                self.f1Kf_spinbox.setValue(kf)
+                t1 = ConverterTemperatura(Tunidade, t1)
+                t2 = ConverterTemperatura(Tunidade, t2) #Converte temperaturas
+                global rho1,cp1,mi1,pr1
+                [rho1,cp1,kf1,mi1,pr1, aviso] = tabela_fluidos(fluid, t1, t2)
+                self.f1Cp_spinBox.setValue(cp1)
+                self.f1Rho_spinBox.setValue(rho1)
+                self.f1Mi_spinbox.setValue(mi1)
+                self.f1Kf_spinbox.setValue(kf1)
                 self.f1R_spinbox.setValue(0)
+                
 
                 #Apresentando valor medio de temperatura
                 self.f1Tm_label.setText("Fluido avaliado em %.2f %s" %(tm, Tunidade))
@@ -1579,9 +1888,11 @@ class Ui_MainWindow(object):
                 self.f1Warning_label.hide()
                 self.f1Tm_label.setText("Fluido avaliado em %.2f %s" %(tm, Tunidade))
 
+
         #Carrega as propriedades do fluido 2
         elif fluido == 2:
             fluid = self.f2Fluids_comboBox.currentText()
+            global T1,T2
             T1 = float(self.f2T1_entry.value())
             T2 = float(self.f2T2_entry.value())
             Tunidade = self.f2T1Unit_comboBox.currentText()     #Adquire temperaturas e unidade
@@ -1590,12 +1901,13 @@ class Ui_MainWindow(object):
             
             if fluid != "Personalizado":
                 T1 = ConverterTemperatura(Tunidade, T1)
-                T2 = ConverterTemperatura(Tunidade, T2) #Converte temperaturas  
-                [rho,cp,kf,mi,pr, aviso] = tabela_fluidos(fluid, T1, T2)
-                self.f2Cp_spinBox.setValue(cp)
-                self.f2Rho_spinBox.setValue(rho)
-                self.f2Mi_spinBox.setValue(mi)
-                self.f2K_spinBox.setValue(kf)
+                T2 = ConverterTemperatura(Tunidade, T2) #Converte temperaturas 
+                global rho2,cp2,mi2,pr2 
+                [rho2,cp2,kf2,mi2,pr2, aviso] = tabela_fluidos(fluid, T1, T2)
+                self.f2Cp_spinBox.setValue(cp2)
+                self.f2Rho_spinBox.setValue(rho2)
+                self.f2Mi_spinBox.setValue(mi2)
+                self.f2K_spinBox.setValue(kf2)
                 self.f2R_spinBox.setValue(0)
 
                 #Apresentando valor medio de temperatura
@@ -1613,6 +1925,7 @@ class Ui_MainWindow(object):
             elif fluid=="Personalizado":
                 self.f2Warning_label.hide()
                 self.f2Tm_label.setText("Fluido avaliado em %.2f %s" %(tm, Tunidade))
+
 
     def atualizaTituloPrograma(self, nomeArquivo):
             #Obter somente o nome do projeto e nao do diretorio
@@ -1735,9 +2048,62 @@ class Ui_MainWindow(object):
         for nomeWidget in spinBoxSalvos:
             widget = self.centralwidget.findChild(QtCore.QObject, nomeWidget)
             widget.setValue(0.0)
+    #--------------------------------------------------------------------------------------------------------------      
+    def mostrar_resultados(self,resultado):
+        if resultado=='calculo':
+            w=float(self.W_entry.value())
+            e=float(self.e_entry.value())
+            L=float(self.L_entry.value())
+            np=float(self.Np_entry.value())
+            vaz1=float(self.f1Flow_entry.value())
+            vaz2=float(self.f2Flow_entry.value())
+            deq=Diam_Eq(w,e)
+            ap=Area_ap(w,e,np)
+            vaz=[vaz1,vaz2]
+            mi=[mi1,mi2]
+            kf=[kf1,kf2]
+            pr=[pr1,pr2]
+            cp=[cp1,cp2]
+            deltatln=dtln(T1,T2,t1,t2)
+            dt1=t2-t1
+            dt2=T2-T1
+            print('dt1=',dt1)
+            print('dt2=',dt2)
+            print('dtln',deltatln)
+            calortaxa=calculaQ(vaz,cp[0],dt1,cp[1],dt2) # acho q tem um erro no menorQ
+            print('Q=',calortaxa)
+            print('Pr=',pr)
+            #Rd vai ser tomado como 0 por enquanto (variavel global)
+            h=coef_convec(pr,vaz,deq,mi,ap,kf)
+            #Rcond=k/e
+            global Rcond, Rd, itmax, tolerancia
+            Ud=coef_global(Rcond,h,Rd)
+            print('Ud=',Ud)
+            Area=area_troca_termica(calortaxa[0],Ud,deltatln,L,w)
+
+            parametros=[w, e, pr, vaz, deq, mi, ap, kf, Rcond, h, Rd, calortaxa[0], Ud, deltatln, L] 
+            Npfinal=iteracaoTrocadorPlacas(np,itmax,tolerancia,parametros)
+
+
+
+            #self.deq_spinBox.setValue(h[0])
+            self.deq_spinBox.setValue(deq)
+            self.ap_spinbox.setValue(ap)
+            self.h_spinbox.setValue(h[0])
+            self.Q_spinbox.setValue(calortaxa[0]) # recebe o valor de calor do fluido frio
+            self.dtln_spinbox.setValue(deltatln)
+            self.A_spinbox.setValue(Area[0])
+            self.Np_spinbox.setValue(Npfinal)
+
+
+
+        
+    #--------------------------------------------------------------------------------------------------------------
+
 
 
 #import images_rc
+
 
 if __name__ == "__main__":
     import sys
@@ -1747,4 +2113,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
